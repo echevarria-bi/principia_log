@@ -1,0 +1,1822 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#080d12">
+<title>Principia.Log | Inteligência Logística Personalizada</title>
+<meta name="description" content="Inteligência logística personalizada para transportadoras.">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;450;500;550;600;650;700&display=swap" rel="stylesheet">
+
+
+
+
+
+
+
+
+
+<style>
+:root{--bg:#080d12;--panel:#0e1a21;--line:#ffffff19;--text:#edf5f7;--muted:#91a4ab;--green:#9be36b;--cyan:#5ed6d0}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:90px}body{margin:0;background:radial-gradient(ellipse at 78% 2%,#1a40351c,transparent 35%),#080d12;color:var(--text);font-family:Inter,system-ui,Segoe UI,sans-serif;line-height:1.55;overflow-x:hidden}a{color:inherit;text-decoration:none}button,input{font:inherit}.wrap{width:min(1180px,calc(100% - 44px));margin:auto}
+header{height:80px;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between}.brand{display:flex;align-items:center;gap:12px;font-size:13.2px;letter-spacing:.16em;font-weight:800}.mark{width:38px;height:38px;border:1px solid #9be36b88;border-radius:10px;display:grid;place-items:center;color:var(--green);font-size:26.4px;box-shadow:0 0 25px #9be36b20}.nav{display:flex;gap:26px;color:#a9b8be;font-size:14.4px}.nav a:hover{color:var(--green)}.topcta{font-size:12px;letter-spacing:.1em;border:1px solid #9be36b77;padding:10px 15px;color:var(--green);border-radius:3px}
+.hero{min-height:650px;display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:44px;padding:70px 0}.eyebrow,.kicker{font-size:12px;color:var(--green);letter-spacing:.2em;font-weight:750}.eyebrow:before{content:"";display:inline-block;width:26px;height:1px;background:var(--green);vertical-align:middle;margin-right:10px}h1{font-size:clamp(51.6px,6.24vw,84px);line-height:1.02;letter-spacing:-.055em;font-weight:570;margin:22px 0 24px}h1 span{color:var(--green)}.hero p{color:#a5b5bb;font-size:18px;line-height:1.85;max-width:530px}.actions{display:flex;gap:22px;align-items:center;margin-top:32px;flex-wrap:wrap}.btn{display:inline-flex;align-items:center;gap:14px;background:var(--green);color:#0b130e;padding:15px 21px;font-size:12px;font-weight:850;letter-spacing:.1em;border:0;cursor:pointer;border-radius:3px;transition:.25s}.btn:hover{transform:translateY(-3px);box-shadow:0 12px 35px #9be36b25}.sub-link{font-size:13.2px;color:#c3d0d4}.sub-link span{color:var(--green)}
+.visual{height:480px;position:relative;border:1px solid var(--line);border-radius:5px;overflow:hidden;background:linear-gradient(90deg,#071016e8,#07101645),linear-gradient(0deg,#071016,transparent 70%),url('https://images.unsplash.com/photo-1519003722824-194d4455a60c?auto=format&fit=crop&w=1400&q=85') center/cover;box-shadow:0 28px 80px #0008}.visual:after{content:"";position:absolute;inset:0;background-image:linear-gradient(#a0cdc10c 1px,transparent 1px),linear-gradient(90deg,#a0cdc10c 1px,transparent 1px);background-size:38px 38px;pointer-events:none}.vlabel,.live{position:absolute;z-index:2;top:20px;font-size:9.6px;letter-spacing:.15em}.vlabel{left:20px}.live{right:20px;color:var(--green)}.live:before{content:"";display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--green);margin-right:7px;animation:pulse 1.5s infinite}
+.route{position:absolute;inset:0;width:100%;height:100%;z-index:1}.route path{fill:none;stroke:var(--green);stroke-width:1.7;stroke-dasharray:7 9;filter:drop-shadow(0 0 5px #9be36b);animation:dash 16s linear infinite}.route circle{fill:var(--green);filter:drop-shadow(0 0 8px #9be36b)}.truck{position:absolute;z-index:2;width:42px;height:23px;offset-path:path("M 45 310 C 115 260 125 370 205 315 S 300 190 360 235 S 445 305 545 145");animation:drive 12s linear infinite;filter:drop-shadow(0 0 8px #9be36b)}.truck:before{content:"";position:absolute;left:0;top:4px;width:28px;height:14px;background:var(--green);border-radius:3px}.truck:after{content:"";position:absolute;right:0;top:8px;width:14px;height:10px;background:#d4f6c2;clip-path:polygon(0 0,70% 0,100% 100%,0 100%)}.float{position:absolute;z-index:3;background:#081217e8;backdrop-filter:blur(12px);border:1px solid #add6c333;padding:13px 15px;min-width:145px;animation:float 5s ease-in-out infinite}.float small{display:block;color:var(--muted);font-size:9.6px;letter-spacing:.12em}.float b{font-size:25.2px;font-weight:570}.float em{font-size:10.8px;color:var(--green);font-style:normal}.f1{left:18px;bottom:22px}.f2{right:17px;top:100px;animation-delay:-1.5s}.f3{right:17px;bottom:22px;animation-delay:-3s}.scan{position:absolute;z-index:2;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--green),transparent);box-shadow:0 0 14px var(--green);animation:scan 6s infinite}
+.metrics{display:grid;grid-template-columns:repeat(4,1fr);padding:24px 0;border-block:1px solid var(--line)}.metric{padding:4px 24px;border-right:1px solid var(--line)}.metric:first-child{padding-left:0}.metric:last-child{border:0}.metric b{display:block;font-size:28.8px;font-weight:550}.metric span{font-size:10.8px;color:var(--muted);letter-spacing:.1em;text-transform:uppercase}
+section{padding:100px 0}.head{display:flex;justify-content:space-between;align-items:end;gap:30px;margin-bottom:40px}.head h2,.copy h2{font-size:clamp(37.2px,4.8vw,57.6px);line-height:1.08;letter-spacing:-.05em;font-weight:560;margin:13px 0 0;max-width:710px}.head p,.copy p{font-size:15.6px;line-height:1.85;color:var(--muted);max-width:370px;margin:0}.grid4{display:grid;grid-template-columns:1fr 1fr;gap:14px}.problem{padding:27px;min-height:215px;background:linear-gradient(145deg,#101b22,#0b1319);border:1px solid var(--line);transition:.25s}.problem:hover{border-color:#9be36b66;transform:translateY(-4px)}.problem small{color:var(--green);font-size:10.8px;letter-spacing:.15em}.problem h3{font-size:22.8px;font-weight:570;margin:16px 0 8px}.problem p{font-size:13.2px;color:var(--muted);line-height:1.85;margin:0}
+.engine,.chat-section{background:linear-gradient(180deg,#0a1218,#0c171d);border-block:1px solid var(--line)}.two-col{display:grid;grid-template-columns:.85fr 1.15fr;gap:60px;align-items:center}.copy p{margin-top:18px}.checks{display:grid;gap:12px;margin-top:24px;font-size:13.2px;color:#c5d2d5}.checks span{color:var(--green);margin-right:9px}.flow{display:grid;grid-template-columns:1fr 1fr;gap:10px}.step{background:#0e1a21;border:1px solid var(--line);padding:17px;min-height:128px;position:relative}.step:before{content:"";position:absolute;top:0;left:0;width:34px;height:1px;background:var(--green)}.step small{font-size:9.6px;color:var(--green);letter-spacing:.14em}.step b{display:block;font-size:15.6px;margin:10px 0 5px}.step p{font-size:12px;color:var(--muted);line-height:1.7;margin:0}
+.demo{border:1px solid var(--line);background:linear-gradient(145deg,#0e1a21,#091117);box-shadow:0 25px 70px #0007;overflow:hidden}.demo-top{padding:16px 20px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;font-size:10.8px;letter-spacing:.12em}.status{color:var(--green)}.tabs{display:flex;gap:5px;flex-wrap:wrap;padding:13px 16px;border-bottom:1px solid var(--line)}.tab{background:none;border:1px solid transparent;color:var(--muted);font-size:10.8px;padding:9px 12px;cursor:pointer}.tab.active,.tab:hover{border-color:#9be36b66;color:var(--green);background:#9be36b0d}.dash{padding:20px}.dashhead{display:flex;justify-content:space-between;gap:15px;align-items:start;margin-bottom:16px}.dashhead h3{font-size:20.4px;margin:0;font-weight:570}.dashhead p{font-size:12px;color:var(--muted);margin:4px 0}.period{border:1px solid var(--line);padding:7px 9px;font-size:9.6px;color:#a8b9be;white-space:nowrap}.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:9px}.kpi{background:#101d24;border:1px solid var(--line);padding:14px}.kpi small{display:block;font-size:9.6px;color:var(--muted);text-transform:uppercase;letter-spacing:.08em}.kpi b{display:block;font-size:24px;margin:7px 0 3px;font-weight:570}.kpi em{font-size:10.8px;color:var(--green);font-style:normal}.lower{display:grid;grid-template-columns:1.2fr .8fr;gap:11px;margin-top:11px}.panel{background:#101d24;border:1px solid var(--line);padding:15px;min-width:0}.panel-title{font-size:10.8px;letter-spacing:.1em;color:#d3e0e2;margin-bottom:12px}.chart{height:175px;background:repeating-linear-gradient(to bottom,transparent 0,transparent 42px,#ffffff0b 43px);border-bottom:1px solid #49616a}.chart svg{width:100%;height:100%;overflow:visible}.line{fill:none;stroke:var(--green);stroke-width:2.7;stroke-dasharray:700;stroke-dashoffset:700;animation:draw 2s forwards;filter:drop-shadow(0 0 5px #9be36b77)}.area{fill:url(#fill)}.legend{font-size:9.6px;color:var(--muted);margin-top:10px}.legend i{display:inline-block;width:7px;height:7px;background:var(--green);border-radius:50%;margin-right:6px}.rank{display:grid;grid-template-columns:1fr auto;gap:8px;padding:11px 0;border-bottom:1px solid var(--line);font-size:12px}.rank:last-child{border:0}.rank small{display:block;color:var(--muted);font-size:9.6px;margin-top:3px}.rank b{color:var(--green);font-size:12px}.note{font-size:9.6px;color:#71858c;margin-top:13px}
+.chat-layout{grid-template-columns:.82fr 1.18fr}.chat-window{border:1px solid #9be36b44;background:#0c171d;box-shadow:0 25px 70px #0007}.chat-head{display:flex;justify-content:space-between;align-items:center;padding:15px 17px;border-bottom:1px solid var(--line)}.agent{display:flex;gap:10px;align-items:center;font-size:12px;font-weight:700}.agent-icon{width:31px;height:31px;border-radius:9px;background:linear-gradient(145deg,#9be36b,#3e8060);display:grid;place-items:center;color:#07120d;font-size:20.4px}.agent small{display:block;color:var(--muted);font-size:9.6px;font-weight:400}.chatbody{padding:16px;min-height:245px;max-height:340px;overflow:auto;display:flex;flex-direction:column;gap:12px}.msg{max-width:90%;padding:11px 13px;font-size:12px;line-height:1.75;white-space:pre-line;animation:appear .25s}.bot{align-self:flex-start;background:#14242a;border:1px solid var(--line);border-radius:3px 11px 11px 11px;color:#d7e2e3}.user{align-self:flex-end;background:#1c3328;border:1px solid #9be36b35;border-radius:11px 3px 11px 11px;color:#e7f4e2}.msg strong{color:var(--green)}.prompts{padding:0 16px 13px;display:flex;flex-wrap:wrap;gap:7px}.prompt{background:none;border:1px solid #9be36b55;color:#b8d5b1;border-radius:20px;padding:7px 10px;font-size:9.6px;cursor:pointer}.prompt:hover{background:#9be36b16;color:white}.chatform{display:flex;gap:8px;padding:11px;border-top:1px solid var(--line)}.chatform input{min-width:0;flex:1;background:#101d24;border:1px solid var(--line);padding:11px;color:white;font-size:12px;outline:none}.chatform input:focus{border-color:#9be36b88}.send{width:40px;border:0;background:var(--green);color:#0b130e;cursor:pointer;font-weight:900}.chatnote{font-size:9.6px;color:#70848b;padding:0 16px 13px}
+.custom-visual{min-height:340px;border:1px solid var(--line);background:radial-gradient(circle at 50%,#19342f,#0c191e 48%,#0a1117 78%);display:grid;place-items:center;position:relative;overflow:hidden}.orbit{width:205px;height:205px;border:1px solid #9be36b70;border-radius:50%;position:relative;box-shadow:0 0 55px #9be36b1c;animation:spin 28s linear infinite}.orbit:before,.orbit:after{content:"";position:absolute;inset:19px;border:1px dashed #5ed6d055;border-radius:50%}.orbit:after{inset:50px;border-style:solid;border-color:#9be36b55}.core{position:absolute;inset:75px;border-radius:50%;background:radial-gradient(circle,#c7f4a0,#4b8b67 43%,#17352c 78%);box-shadow:0 0 35px #9be36b88;animation:pulse 2.4s infinite}.node{position:absolute;top:20px;left:97px;width:9px;height:9px;border-radius:50%;background:var(--green);box-shadow:0 0 12px var(--green)}.orb-label{position:absolute;font-size:9.6px;color:#a7b9bd;letter-spacing:.13em}.l1{top:20px;left:18px}.l2{right:18px;bottom:20px}.l3{right:20px;top:70px}.custom-cards{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:22px}.custom-card{background:#0e1a21;border:1px solid var(--line);padding:14px}.custom-card b{display:block;color:var(--green);font-size:10.8px;letter-spacing:.1em;margin-bottom:6px}.custom-card span{font-size:12px;color:#aab9bd;line-height:1.7}
+.cta{padding:65px 0 85px}.cta-panel{padding:50px;background:linear-gradient(110deg,#12221f,#0d171d 65%);border:1px solid #9be36b35;display:flex;justify-content:space-between;align-items:center;gap:28px}.cta-panel h2{font-size:clamp(34.8px,4.8vw,54px);line-height:1.08;letter-spacing:-.05em;font-weight:550;margin:12px 0;max-width:680px}.cta-panel p{font-size:14.4px;color:#a5b5bb;max-width:650px;line-height:1.8}footer{border-top:1px solid var(--line);padding:24px 0;color:#71858c;font-size:10.8px;letter-spacing:.09em;display:flex;justify-content:space-between;gap:15px}
+.reveal{opacity:0;transform:translateY(22px);transition:.8s}.reveal.show{opacity:1;transform:none}
+@keyframes pulse{50%{opacity:1;transform:scale(1.08)}0%,100%{opacity:.65;transform:scale(.92)}}@keyframes dash{to{stroke-dashoffset:-340}}@keyframes scan{0%{top:0;opacity:0}15%{opacity:1}100%{top:100%;opacity:0}}@keyframes drive{to{offset-distance:100%}}@keyframes float{50%{transform:translateY(-8px)}}@keyframes spin{to{transform:rotate(360deg)}}@keyframes draw{to{stroke-dashoffset:0}}@keyframes appear{from{opacity:0;transform:translateY(7px)}to{opacity:1;transform:none}}
+@media(max-width:900px){.nav{display:none}.hero{grid-template-columns:1fr;padding:55px 0;gap:35px}.two-col{grid-template-columns:1fr;gap:35px}.head{display:block}.head p{margin-top:16px}.chat-layout{gap:28px}.cta-panel{display:block}.cta-panel .btn{margin-top:15px}}
+@media(max-width:600px){.wrap{width:calc(100% - 32px)}header{height:68px}.topcta{font-size:9.6px;padding:9px}.brand{font-size:10.8px}.mark{width:33px;height:33px}.hero{padding:45px 0 55px}h1{font-size:clamp(48px,13.2vw,63.6px)}.hero p{font-size:15.6px}.visual{height:360px}.vlabel,.live{top:14px;font-size:8.4px}.float{min-width:112px;padding:10px}.float b{font-size:20.4px}.f1{left:9px;bottom:12px}.f2{right:9px;top:78px}.f3{right:9px;bottom:12px}.metrics{grid-template-columns:1fr 1fr;row-gap:18px}.metric{padding:4px 12px}.metric:nth-child(2){border:0}.metric:nth-child(3){padding-left:0}.metric b{font-size:25.2px}.metric span{font-size:9.6px}section{padding:72px 0}.head h2,.copy h2{font-size:40.8px}.grid4{grid-template-columns:1fr}.problem{min-height:0;padding:22px}.step{padding:13px;min-height:130px}.step b{font-size:14.4px}.step p{font-size:10.8px}.dash{padding:12px}.tabs{padding:9px}.tab{font-size:9.6px;padding:8px}.kpis{grid-template-columns:1fr 1fr}.kpi{padding:11px}.kpi b{font-size:21.6px}.dashhead h3{font-size:16.8px}.period{font-size:8.4px}.lower{grid-template-columns:1fr}.chart{height:150px}.chatbody{padding:12px;min-height:230px}.msg{font-size:10.8px;max-width:95%}.prompts{padding:0 12px 12px}.custom-visual{min-height:290px}.orbit{transform:scale(.82)}.custom-cards{gap:7px}.custom-card{padding:11px}.cta-panel{padding:27px}.cta-panel h2{font-size:38.4px}footer{flex-direction:column;gap:8px}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition:none!important}.reveal{opacity:1;transform:none}}
+
+/* Refinamentos Principia.Log — painel, chat e fluxo de conexões */
+.dashboard-showcase{border:1px solid #5ed6d044;background:#091319;box-shadow:0 25px 80px #0008;padding:14px}
+.showcase-head{display:flex;justify-content:space-between;align-items:center;padding:9px 8px 14px;font-size:10.8px;letter-spacing:.14em;color:#c7d5d8}
+.showcase-image{position:relative;overflow:hidden;border:1px solid #5ed6d055;border-radius:8px;background:#081117}
+.showcase-image img{display:block;width:100%;height:auto;filter:saturate(1.05);animation:subtleZoom 18s ease-in-out infinite alternate}
+.image-live{position:absolute;top:14px;left:16px;padding:8px 11px;background:#061217d9;border:1px solid #5ed6d055;color:#c5e6df;font-size:9.6px;letter-spacing:.13em;backdrop-filter:blur(8px)}
+.image-live i{display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--green);margin-right:7px;box-shadow:0 0 10px var(--green);animation:pulse 1.5s infinite}
+.image-scan{position:absolute;left:0;right:0;top:0;height:2px;background:linear-gradient(90deg,transparent,#9be36b,transparent);box-shadow:0 0 16px #9be36b;animation:scan 7s linear infinite}
+.image-caption{position:absolute;bottom:14px;left:16px;padding:12px 15px;background:#061217e8;border:1px solid #5ed6d044;max-width:330px;backdrop-filter:blur(8px)}
+.image-caption b,.image-caption span{display:block}.image-caption b{font-size:15.6px}.image-caption span{font-size:10.8px;color:#9fb1b6;margin-top:3px}
+.dashboard-showcase>.demo{margin-top:14px}
+.chart{height:190px;position:relative;overflow:hidden;background:repeating-linear-gradient(to bottom,transparent 0,transparent 46px,#ffffff0c 47px);border-bottom:1px solid #49616a}
+.chart svg{width:100%;height:100%;overflow:visible}.chart-area{fill:url(#chartFill);stroke:none}.chart-line{fill:none;stroke:var(--green);stroke-width:3.5;stroke-linecap:round;stroke-linejoin:round;filter:drop-shadow(0 0 6px #9be36b99);stroke-dasharray:1200;stroke-dashoffset:1200;animation:drawLine 2s cubic-bezier(.2,.7,.2,1) forwards}
+.alert-row{display:flex;align-items:center;gap:10px;padding:11px 10px;border:1px solid var(--line);border-radius:7px;margin-bottom:8px;background:#0b171d}
+.alert-row>div{min-width:0;flex:1}.alert-row b,.alert-row small{display:block}.alert-row b{font-size:12px}.alert-row small{font-size:9.6px;color:var(--muted);margin-top:3px}.alert-row strong{font-size:14.4px}.alert-symbol{width:25px;height:25px;display:grid;place-items:center;border-radius:7px;font-weight:800}
+.alert-row.danger{border-color:#ff796044}.alert-row.danger b,.alert-row.danger strong,.alert-row.danger .alert-symbol{color:#ff897b}.alert-row.danger .alert-symbol{background:#ff796018}
+.alert-row.warning{border-color:#e9c45b44}.alert-row.warning b,.alert-row.warning strong,.alert-row.warning .alert-symbol{color:#e9c45b}.alert-row.warning .alert-symbol{background:#e9c45b18}
+.alert-row.success{border-color:#9be36b44}.alert-row.success b,.alert-row.success strong,.alert-row.success .alert-symbol{color:var(--green)}.alert-row.success .alert-symbol{background:#9be36b18}
+.insight-strip{display:flex;align-items:flex-start;gap:12px;margin-top:12px;padding:15px;background:linear-gradient(100deg,#173327,#102129);border:1px solid #9be36b55;border-radius:6px}
+.insight-icon{font-size:25.2px;color:var(--green)}.insight-strip b{font-size:10.8px;letter-spacing:.14em;color:var(--green)}.insight-strip p{font-size:12px;color:#d0dddc;margin:4px 0 0;line-height:1.7}
+.chat-window{box-shadow:0 25px 80px #0008}.chat-head{background:linear-gradient(90deg,#10231f,#0d171d)}.agent-icon{box-shadow:0 0 22px #9be36b44}.chatbody{background:radial-gradient(ellipse at 5% 0%,#1a393022,transparent 50%),#0a141a;min-height:280px}.msg{font-size:13.2px;max-width:92%}.msg.bot{border-left:2px solid #5ed6d0}.msg strong{color:var(--green)}.prompts{gap:8px}.prompt{font-size:10.8px;padding:8px 12px;background:#0b1a1c;border-color:#9be36b66}.prompt:hover{border-color:var(--green);box-shadow:0 0 16px #9be36b18}.chatform input{font-size:13.2px}.send{font-size:21.6px}.thinking{display:flex;align-items:center;gap:5px}.thinking i{width:5px;height:5px;background:var(--green);border-radius:50%;animation:typing .8s infinite alternate}.thinking i:nth-child(2){animation-delay:.2s}.thinking i:nth-child(3){animation-delay:.4s}
+.connection-visual{border:1px solid #5ed6d055;background:radial-gradient(ellipse at 50% 48%,#15362d 0,#0b171c 48%,#081117 100%);padding:18px;position:relative;overflow:hidden;min-height:560px;box-shadow:0 25px 70px #0007}
+.connection-top{display:flex;justify-content:space-between;font-size:9.6px;letter-spacing:.13em;color:#a8bdc0}.connection-stage{display:flex;flex-direction:column;align-items:center;padding:25px 0 15px;position:relative}
+.source-node,.intelligence-node{display:flex;flex-direction:column;align-items:center;text-align:center;position:relative;z-index:2}.node-icon{width:54px;height:54px;border-radius:15px;display:grid;place-items:center;background:#193b31;border:1px solid #9be36b77;color:var(--green);font-size:32.4px;box-shadow:0 0 28px #9be36b24}.source-node b,.intelligence-node b{font-size:13.2px;letter-spacing:.13em;margin-top:8px}.source-node small,.intelligence-node small{font-size:9.6px;color:var(--muted);margin-top:3px}
+.source-cloud{display:flex;justify-content:center;gap:7px;flex-wrap:wrap;max-width:390px}.tool-pill{padding:7px 9px;border:1px solid #5ed6d055;border-radius:4px;background:#0c2025;color:#b7d6d2;font-size:9.6px;letter-spacing:.05em;box-shadow:0 0 15px #5ed6d00b}
+.data-stream{height:43px;width:2px;background:linear-gradient(180deg,#9be36b22,#9be36b);position:relative;overflow:hidden;margin:5px 0}.data-stream:after{content:"";position:absolute;left:-3px;top:-10px;width:8px;height:8px;border-radius:50%;background:#c8ff9b;box-shadow:0 0 13px #9be36b;animation:dataDrop 1.5s linear infinite}.data-stream i{position:absolute;left:-2px;width:6px;height:6px;border-radius:50%;background:#5ed6d0;box-shadow:0 0 9px #5ed6d0;animation:dataDrop 1.8s linear infinite}.data-stream i:nth-child(2){animation-delay:.35s}.data-stream i:nth-child(3){animation-delay:.7s}.data-stream i:nth-child(4){animation-delay:1.05s}.data-stream i:nth-child(5){animation-delay:1.4s}
+.intelligence-node{padding:15px 28px;border:1px solid #9be36b99;border-radius:10px;background:linear-gradient(135deg,#193b2e,#10232a);box-shadow:0 0 40px #9be36b26}.brain-mark{font-size:36px;color:var(--green);animation:spinSlow 14s linear infinite;text-shadow:0 0 18px #9be36b}
+.data-stream.output{height:35px}.result-nodes{display:grid;grid-template-columns:repeat(4,1fr);gap:7px;width:100%}.result-nodes div{padding:12px 5px;text-align:center;background:#102129;border:1px solid #5ed6d044;border-radius:5px;animation:resultGlow 3s ease-in-out infinite alternate}.result-nodes div:nth-child(2){animation-delay:.6s}.result-nodes div:nth-child(3){animation-delay:1.2s}.result-nodes div:nth-child(4){animation-delay:1.8s}.result-nodes b{display:block;font-size:20.4px;color:var(--green)}.result-nodes small{display:block;font-size:8.4px;color:#9fb1b6;margin-top:3px}
+.connection-foot{border-top:1px solid var(--line);padding-top:14px;text-align:center;font-size:8.4px;letter-spacing:.1em;color:#91a8ad}.connection-foot span{color:var(--green);padding:0 5px}
+@keyframes drawLine{to{stroke-dashoffset:0}}@keyframes dataDrop{from{transform:translateY(-10px);opacity:0}25%{opacity:1}to{transform:translateY(45px);opacity:0}}@keyframes spinSlow{to{transform:rotate(360deg)}}@keyframes resultGlow{to{border-color:#9be36b99;box-shadow:0 0 18px #9be36b16}}@keyframes typing{to{opacity:.25;transform:translateY(-3px)}}@keyframes subtleZoom{to{transform:scale(1.025)}}
+@media(max-width:600px){.dashboard-showcase{padding:8px}.showcase-head{font-size:8.4px}.image-live{top:8px;left:8px;font-size:7.2px;padding:6px}.image-caption{left:8px;bottom:8px;padding:8px 10px;max-width:220px}.image-caption b{font-size:12px}.image-caption span{font-size:8.4px}.chart{height:155px}.alert-row{padding:9px 7px;gap:7px}.alert-row b{font-size:10.8px}.alert-row small{font-size:8.4px}.insight-strip{padding:11px}.connection-visual{padding:13px;min-height:520px}.source-cloud{gap:5px}.tool-pill{font-size:8.4px;padding:6px}.result-nodes{gap:5px}.result-nodes div{padding:10px 3px}.result-nodes b{font-size:16.8px}.result-nodes small{font-size:7.2px}.connection-foot{font-size:7.2px}.msg{font-size:12px}}
+
+
+/* V3 — painel de frota animado, relatórios e copiloto */
+.showcase-image{aspect-ratio:962/477;min-height:250px}
+.showcase-image>img{width:100%;height:100%;object-fit:cover;object-position:center;animation:none}
+.image-live{z-index:8}
+.map-motion-layer{position:absolute;inset:0;z-index:4;pointer-events:none}
+.map-motion-layer svg{width:100%;height:100%;overflow:visible}
+.live-vehicle-card,.live-distance-card{position:absolute;z-index:7;background:#06151beF;border:1px solid #5ed6d088;box-shadow:0 8px 25px #0009;padding:9px 12px;backdrop-filter:blur(8px);min-width:120px}
+.live-vehicle-card{right:2.5%;top:42%;display:flex;flex-direction:column;gap:3px}
+.live-vehicle-card b{font-size:9.6px;color:#9be36b;letter-spacing:.08em}.live-vehicle-card strong{font-size:21.6px;color:#f0f7f6}.live-vehicle-card small,.live-distance-card small{font-size:8.4px;color:#90a8ae;letter-spacing:.1em}
+.live-dot{width:6px;height:6px;border-radius:50%;background:#9be36b;box-shadow:0 0 10px #9be36b;position:absolute;right:10px;top:12px;animation:pulse 1s infinite}
+.live-distance-card{right:2.5%;bottom:4%;display:flex;flex-direction:column;gap:4px}.live-distance-card strong{font-size:20.4px}.live-distance-card em{font-size:9.6px;color:#9be36b;font-style:normal}
+.alert-pulse{position:absolute;right:17.8%;top:23.5%;width:17px;height:17px;border-radius:50%;z-index:5;border:2px solid #ff7960;animation:alertRing 1.4s infinite;pointer-events:none}
+@keyframes alertRing{0%{transform:scale(.65);opacity:1;box-shadow:0 0 0 0 #ff796077}100%{transform:scale(1.6);opacity:0;box-shadow:0 0 0 10px #ff796000}}
+.tabs{display:flex;gap:7px;flex-wrap:wrap;padding:12px;background:#0b171e;border-bottom:1px solid #ffffff12}
+.tab{padding:11px 14px;border:1px solid #233941;background:linear-gradient(180deg,#14252c,#0e1a20);border-radius:6px;color:#8fa6ac;font-size:10.8px;letter-spacing:.06em;font-weight:700;cursor:pointer;transition:.25s}
+.tab.active{color:#c9ffac;border-color:#9be36b99;background:linear-gradient(135deg,#1b3c2c,#10251f);box-shadow:inset 0 0 20px #9be36b12,0 0 15px #9be36b12}
+.dash{padding:18px;background:linear-gradient(145deg,#0c171d,#0a1419)}
+.dashhead{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:17px}.dashhead h3{font-size:20.4px;letter-spacing:-.02em}.dashhead p{font-size:12px;color:#8fa4aa}
+.kpis{gap:10px}.kpi{position:relative;overflow:hidden;background:linear-gradient(145deg,#14252c,#101d23);border:1px solid #29414a;border-radius:7px;padding:15px;min-height:110px}.kpi:after{content:"";position:absolute;right:-20px;top:-26px;width:85px;height:85px;border-radius:50%;background:#9be36b0b}.kpi small{font-size:9.6px;letter-spacing:.1em}.kpi b{font-size:25.2px;display:block;margin:10px 0 8px}.kpi em{font-size:10.8px;color:#9be36b}
+.lower{gap:12px}.panel{background:linear-gradient(145deg,#122229,#0d191f);border:1px solid #29414a;border-radius:7px;padding:16px;min-width:0}.panel-title{font-size:10.8px;letter-spacing:.12em;color:#b9c9ca;margin-bottom:14px;font-weight:700}
+.chart{height:260px;border:1px solid #233941;border-radius:5px;padding:10px;background:linear-gradient(180deg,#0b171d,#0e1c22);background-image:repeating-linear-gradient(to bottom,transparent 0,transparent 48px,#ffffff0c 49px)}
+.chart svg{width:100%;height:100%;overflow:visible}.chart-grid{stroke:#ffffff12;stroke-width:1}.chart-area{fill:url(#chartFill);stroke:none}.chart-line{fill:none;stroke:#9be36b;stroke-width:4;stroke-linecap:round;stroke-linejoin:round;filter:drop-shadow(0 0 7px #9be36b88);stroke-dasharray:1600;stroke-dashoffset:1600;animation:drawLine 2.4s ease forwards}.secondary-line{stroke:#50d7ce;stroke-width:2.5;opacity:.8;animation-delay:.25s}.chart-point{fill:#d7ffb8;stroke:#9be36b;stroke-width:3;filter:drop-shadow(0 0 5px #9be36b)}.chart-bar{fill:url(#barFill);stroke:#9be36b;stroke-width:1;filter:drop-shadow(0 0 5px #9be36b33);transform-origin:bottom;animation:barGrow .9s ease both}
+.chart svg defs{display:block}
+@keyframes barGrow{from{transform:scaleY(.05);opacity:.2}to{transform:scaleY(1);opacity:1}}
+.chat-window{overflow:hidden;background:linear-gradient(145deg,#0d1c22,#091319);border:1px solid #4c876e77;box-shadow:0 25px 80px #0009}
+.chat-console-head{display:flex;justify-content:space-between;padding:12px 16px;background:#101f25;border-bottom:1px solid #ffffff14;font-size:9.6px;letter-spacing:.12em;color:#9eb5b8}.chat-console-head span:last-child{color:#9be36b}
+.chat-metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;padding:12px 15px;background:#0b171d;border-bottom:1px solid #ffffff12}.chat-metrics>div{padding:9px 10px;background:linear-gradient(135deg,#14272d,#101d23);border:1px solid #263e45;border-radius:5px}.chat-metrics small,.chat-metrics b{display:block}.chat-metrics small{font-size:8.4px;color:#82999f;letter-spacing:.1em}.chat-metrics b{font-size:13.2px;color:#d9e7e6;margin-top:5px}
+.chat-head{background:linear-gradient(90deg,#173629,#102128);padding:16px}.chatbody{min-height:300px;max-height:420px;background:radial-gradient(ellipse at 10% 0%,#1d493022,transparent 55%),#09151b}.msg{font-size:13.2px;padding:14px 16px;border-radius:8px}.bot{border:1px solid #2b5051;background:#13262c}.user{background:#1b382b;border-color:#9be36b66}.prompts{padding:12px 16px;background:#0b171d}.prompt{border-radius:5px;padding:9px 11px;font-size:10.8px;background:#112128}.chatform{padding:12px 15px;background:#0b171d}.chatform input{border-radius:5px;background:#13232a;border:1px solid #35515a;padding:13px}.send{border-radius:5px;min-width:48px}.chatnote{padding:0 15px 14px;background:#0b171d}
+@media(max-width:650px){.showcase-image{aspect-ratio:962/477;min-height:210px}.live-vehicle-card{right:2%;top:43%;min-width:95px;padding:7px}.live-vehicle-card strong{font-size:16.8px}.live-distance-card{right:2%;bottom:3%;min-width:100px;padding:7px}.live-distance-card strong{font-size:16.8px}.alert-pulse{right:17%;top:23%}.dash{padding:11px}.dashhead h3{font-size:16.8px}.dashhead p{font-size:10.8px}.period{font-size:8.4px}.kpis{grid-template-columns:repeat(2,minmax(0,1fr));gap:7px}.kpi{padding:11px;min-height:98px}.kpi b{font-size:20.4px}.lower{grid-template-columns:1fr}.chart{height:220px}.panel{padding:12px}.tabs{gap:5px}.tab{font-size:8.4px;padding:9px 8px}.chat-metrics{gap:5px;padding:9px}.chat-metrics>div{padding:7px}.chat-metrics small{font-size:7.2px}.chat-metrics b{font-size:10.8px}.chatbody{min-height:260px}.msg{font-size:12px}}
+
+
+/* V4 — dashboard único no hero, sem cards ou rotas duplicadas */
+.hero-dashboard{position:relative;width:100%;border:1px solid #3b7776;border-radius:9px;padding:12px;background:linear-gradient(145deg,#0d2025,#081217);box-shadow:0 24px 70px #0008;overflow:hidden}
+.hero-dashboard-top,.hero-dashboard-foot{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:4px 5px 11px;font-size:9.6px;letter-spacing:.13em;color:#c0d1d1}
+.hero-dashboard-top span:last-child{color:#9be36b}
+.hero-dashboard-top i{display:inline-block;width:7px;height:7px;border-radius:50%;background:#9be36b;box-shadow:0 0 10px #9be36b;margin-right:6px;animation:pulse 1.4s infinite}
+.hero-dashboard-screen{position:relative;overflow:hidden;border:1px solid #315a61;border-radius:7px;aspect-ratio:962/472;background:#071117}
+.hero-dashboard-screen>img{display:block;width:100%;height:100%;object-fit:cover}
+.existing-route-truck{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+.dashboard-live-values{position:absolute;inset:0;pointer-events:none;font-family:inherit}
+.distance-value,.speed-value{position:absolute;display:block;color:#eef7f5;font-weight:700;line-height:1;white-space:nowrap;text-shadow:0 1px 2px #000}
+.distance-value{left:62.2%;top:29.1%;font-size:clamp(10.8px,1.44vw,18px);background:#10252c;padding:1px 3px}
+.speed-value{left:87.3%;top:57.4%;font-size:clamp(9.6px,1.2vw,15.6px);background:#10252c;padding:1px 2px}
+.hero-dashboard-foot{padding:10px 5px 2px;color:#81999f;font-size:8.4px}
+.reports-console{margin-top:24px;border:1px solid #29434b;background:#09151b;box-shadow:0 20px 60px #0006}
+.reports-console .demo{margin:0}
+.reports-console .demo-top{padding:16px 18px}
+.reports-console .tabs{border-top:1px solid #ffffff10}
+@media(max-width:700px){
+ .hero-dashboard{padding:8px;border-radius:7px}
+ .hero-dashboard-top{font-size:7.2px;padding-bottom:8px}
+ .hero-dashboard-foot{font-size:6px;padding-top:7px}
+ .distance-value{left:62%;top:29%;font-size:10.8px}
+ .speed-value{left:87%;top:57%;font-size:9.6px}
+ .reports-console{margin-top:16px}
+}
+
+
+/* V5 — dashboard sem sobreposições, com painel inferior completo */
+.hero-dashboard{width:100%;position:relative;overflow:hidden;border:1px solid #327b78;border-radius:9px;padding:12px;background:#08151a;box-shadow:0 24px 70px #0008}
+.hero-dashboard-top,.hero-dashboard-foot{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:4px 5px 11px;font-size:9.6px;letter-spacing:.13em;color:#c0d1d1}
+.hero-dashboard-top span:last-child{color:#9be36b}
+.hero-dashboard-top i{display:inline-block;width:7px;height:7px;border-radius:50%;background:#9be36b;box-shadow:0 0 10px #9be36b;margin-right:6px;animation:pulse 1.4s infinite}
+.hero-dashboard-screen{position:relative;overflow:hidden;border:0;border-radius:5px;aspect-ratio:930/290;background:#071117}
+.hero-dashboard-screen>img{display:block;width:100%;height:100%;object-fit:cover}
+.existing-route-truck{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+.dashboard-live-values{position:absolute;inset:0;pointer-events:none;font-family:inherit}
+.distance-value,.speed-value{position:absolute;display:block;color:#eef7f5;font-weight:800;line-height:1;white-space:nowrap;text-shadow:0 1px 3px #000;background:#10252c;padding:1px 3px;border-radius:2px}
+.distance-value{left:47.2%;top:9.2%;font-size:clamp(10.8px,1.26vw,15.6px);background:transparent;padding:0;text-shadow:0 1px 3px #061116}
+.speed-value{left:87.5%;top:49.5%;font-size:clamp(10.8px,1.26vw,15.6px)}
+.hero-dashboard-foot{padding:10px 5px 2px;color:#81999f;font-size:8.4px}
+.dashboard-lower-panels{display:grid;grid-template-columns:1fr 1fr 1.2fr;gap:9px;margin-top:9px}
+.lower-panel{min-width:0;padding:13px 14px;background:linear-gradient(145deg,#10232a,#0b171d);border:1px solid #263f47;border-radius:6px;overflow:hidden}
+.lower-panel-title{font-size:9.6px;letter-spacing:.11em;color:#a9bdc0;font-weight:700;margin-bottom:12px}
+.cost-panel>strong{display:block;font-size:24px;color:#eef7f5}.cost-panel>strong em{font-size:10.8px;color:#9be36b;font-style:normal;margin-left:5px}
+.lower-panel small{display:block;font-size:8.4px;color:#82999f;margin-top:8px}
+.mini-bars{height:38px;display:flex;align-items:end;gap:5px;margin-top:8px}
+.mini-bars i{flex:1;height:var(--h,60%);border-radius:2px 2px 0 0;background:linear-gradient(180deg,#9be36b,#24b9a5);animation:barRise 1.8s ease-in-out infinite alternate}
+.mini-bars i:nth-child(1){--h:45%;animation-delay:.1s}.mini-bars i:nth-child(2){--h:65%;animation-delay:.25s}.mini-bars i:nth-child(3){--h:52%;animation-delay:.4s}.mini-bars i:nth-child(4){--h:82%;animation-delay:.55s}.mini-bars i:nth-child(5){--h:60%;animation-delay:.7s}.mini-bars i:nth-child(6){--h:72%;animation-delay:.85s}.mini-bars i:nth-child(7){--h:90%;animation-delay:1s}.mini-bars i:nth-child(8){--h:78%;animation-delay:1.15s}
+@keyframes barRise{from{transform:scaleY(.72);transform-origin:bottom}to{transform:scaleY(1);transform-origin:bottom}}
+.composition-line{display:grid;grid-template-columns:1fr auto;gap:4px 8px;font-size:8.4px;color:#a7b9bc;margin:7px 0}
+.composition-line b{color:#dce8e8}.composition-line i{grid-column:1/3;height:4px;border-radius:4px;background:linear-gradient(90deg,#22c7b3 var(--w),#223940 var(--w));display:block}
+.insight-mini{padding:6px 7px;margin-top:5px;border:1px solid #29414a;border-radius:4px;background:#0c1c22}
+.insight-mini b,.insight-mini small{display:block;margin:0}.insight-mini b{font-size:8.4px;color:#dce8e8}.insight-mini small{font-size:7.2px;color:#82999f;margin-top:3px}
+.insight-mini.danger b{color:#ff8d7c}.insight-mini.positive b{color:#9be36b}
+@media(max-width:700px){
+ .hero-dashboard{padding:8px;border-radius:7px}
+ .hero-dashboard-top{font-size:7.2px;padding-bottom:8px}
+ .hero-dashboard-foot{font-size:6px;padding-top:7px}
+ .hero-dashboard-screen{aspect-ratio:930/290}
+ .distance-value{left:47.2%;top:9.2%;font-size:9.6px;background:transparent;padding:0}
+ .speed-value{left:87.5%;top:49.5%;font-size:8.4px}
+ .dashboard-lower-panels{grid-template-columns:1fr 1fr;gap:6px}
+ .insight-panel{grid-column:1/-1}
+ .lower-panel{padding:9px}
+ .lower-panel-title{font-size:8.4px;margin-bottom:8px}
+ .cost-panel>strong{font-size:19.2px}
+}
+
+
+/* V6 — uma única rota e caminhão alinhado ao trajeto */
+.hero-dashboard-screen{isolation:isolate}
+.existing-route-truck{z-index:3}
+.existing-route-truck g{transform-box:fill-box}
+
+
+/* V8 — mantém o dashboard original; corrige apenas escala, rota e sobreposições */
+.hero-dashboard{padding:10px}
+.hero-dashboard-screen{aspect-ratio:930/290}
+.dashboard-lower-panels{grid-template-columns:1fr 1fr 1.15fr;gap:9px}
+.lower-panel{padding:11px 12px}
+.lower-panel-title{font-size:9.6px;margin-bottom:9px}
+.cost-panel>strong{font-size:21.6px}
+.mini-bars{height:34px}
+.existing-route-truck{overflow:visible}
+.distance-value,.speed-value{background:transparent!important;padding:0!important;border-radius:0!important}
+.distance-value{left:47.2%;top:9.2%;font-size:clamp(10.8px,1.26vw,15.6px);text-shadow:0 1px 3px #061116}
+.speed-value{left:87.5%;top:49.5%;font-size:clamp(9.6px,1.14vw,14.4px);text-shadow:0 1px 3px #061116}
+@media(max-width:700px){
+ .hero-dashboard{padding:8px}
+ .dashboard-lower-panels{grid-template-columns:1fr 1fr;gap:6px}
+ .insight-panel{grid-column:1/-1}
+ .lower-panel{padding:9px}
+ .distance-value{left:47.2%;top:9.2%;font-size:9.6px}
+ .speed-value{left:87.5%;top:49.5%;font-size:8.4px}
+}
+
+
+/* V9 — ajustes pontuais nos indicadores e na animação da rota */
+.distance-value{left:47.2%;top:16.2%;font-size:clamp(10.8px,1.26vw,15.6px);background:transparent!important;padding:0!important;border-radius:0!important;text-shadow:0 1px 3px #061116}
+.speed-value{left:87.5%;top:73.5%;font-size:clamp(9.6px,1.14vw,14.4px);background:transparent!important;padding:0!important;border-radius:0!important;text-shadow:0 1px 3px #061116}
+.existing-route-truck{z-index:3}
+.existing-route-truck #existingMapRoute{fill:none;stroke:none;stroke-dasharray:none}
+.existing-route-truck .moving-truck,.existing-route-truck g{filter:drop-shadow(0 0 3px #9be36b)}
+@media(max-width:700px){
+ .distance-value{left:47.2%;top:16.2%;font-size:9.6px}
+ .speed-value{left:87.5%;top:73.5%;font-size:8.4px}
+}
+
+
+/* V10 — mapa vetorial limpo: um único traçado e um único veículo */
+.hero-dashboard-screen{position:relative;isolation:isolate}
+.hero-dashboard-screen>img{position:relative;z-index:0}
+.map-rebuild-layer{position:absolute;inset:0;width:100%;height:100%;z-index:2;pointer-events:none}
+.dashboard-live-values{z-index:3}
+.distance-value,.speed-value{background:transparent!important;padding:0!important;border:0!important;border-radius:0!important;box-shadow:none!important;text-shadow:0 1px 3px #041016}
+.distance-value{left:48.4%;top:15.8%;font-size:clamp(10.8px,1.26vw,15.6px)}
+.speed-value{left:87.4%;top:73.4%;font-size:clamp(9.6px,1.14vw,14.4px)}
+@media(max-width:700px){
+ .distance-value{left:48.4%;top:15.8%;font-size:9.6px}
+ .speed-value{left:87.4%;top:73.4%;font-size:8.4px}
+}
+
+
+/* V11 — dashboard integralmente nativo em HTML/CSS/SVG */
+.hero-dashboard{padding:16px;background:#071318;border:1px solid #286d6a;border-radius:12px}
+.hero-dashboard-screen.dashboard-native{display:grid;grid-template-columns:150px minmax(0,1fr);gap:0;aspect-ratio:auto;min-height:0;overflow:hidden;background:#07141b;border:1px solid #1b3b44;border-radius:8px}
+.dash-sidebar{display:flex;flex-direction:column;gap:5px;padding:17px 12px;background:linear-gradient(180deg,#0b2028,#08151c);border-right:1px solid #23404a;min-width:0}
+.dash-logo{display:flex;align-items:center;gap:8px;margin:0 0 18px 4px;font-size:12px;line-height:1.05;letter-spacing:.12em;font-weight:800}
+.dash-logo-mark{display:grid;place-items:center;width:27px;height:27px;border-radius:8px;background:linear-gradient(135deg,#20cdb6,#9be36b);color:#061318;font-size:25.2px}
+.dash-nav{display:flex;align-items:center;gap:9px;padding:9px 8px;border-radius:5px;color:#8ea5ad;font-size:12px;min-height:33px}
+.dash-nav>b{width:16px;text-align:center;color:#6da9a9;font-size:16.8px}.dash-nav.active{background:#10332f;color:#9be36b;border:1px solid #1c665b;box-shadow:inset 0 0 18px #16c7a51c}.dash-nav small{display:block;color:#6e9292;font-size:9.6px}.dash-nav i{float:right;background:#ed6557;color:white;border-radius:20px;padding:1px 5px;font-size:9.6px;font-style:normal}
+.sidebar-foot{margin-top:auto;padding:12px 4px 0;border-top:1px solid #ffffff12;color:#7f9a9f;font-size:9.6px}.online-dot,.live-tag i{display:inline-block;width:6px;height:6px;border-radius:50%;background:#9be36b;box-shadow:0 0 9px #9be36b;margin-right:5px}
+.dash-main{min-width:0;padding:15px;display:flex;flex-direction:column;gap:11px}
+.dash-main-head{display:flex;justify-content:space-between;align-items:center;gap:12px}.dash-main-head small,.widget-head small{font-size:9.6px;letter-spacing:.13em;color:#7fa2a8}.dash-main-head h3{font-size:20.4px;margin:2px 0;font-weight:650}.dash-main-head span{font-size:9.6px;color:#78949b}.dash-period{border:1px solid #29464e;padding:8px 10px;border-radius:4px;color:#a9bec1;font-size:9.6px;white-space:nowrap}
+.dash-kpis{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}
+.dash-kpi{position:relative;display:flex;align-items:center;gap:8px;min-width:0;min-height:78px;padding:10px;background:linear-gradient(145deg,#10252c,#0b1a21);border:1px solid #25424b;border-radius:7px;overflow:hidden}
+.kpi-icon{flex:0 0 25px;height:25px;display:grid;place-items:center;border-radius:6px;background:#103b3a;font-size:19.2px}.kpi-icon.teal{color:#42d9b8}.kpi-icon.cyan{color:#35d8d0}.kpi-icon.yellow{color:#e9cb58;background:#39341b}.kpi-icon.red{color:#ff806d;background:#3b2223}
+.dash-kpi>div:nth-child(2){min-width:0;display:flex;flex-direction:column}.dash-kpi small{font-size:8.4px;color:#89a3a9;letter-spacing:.06em;white-space:nowrap}.dash-kpi b{font-size:21.6px;line-height:1.3;white-space:nowrap}.dash-kpi em{font-size:9.6px;color:#9be36b;font-style:normal;white-space:nowrap}.dash-kpi em span{color:#78949b}.dash-kpi em.negative{color:#ef8374}.dash-kpi svg{width:48px;height:24px;position:absolute;right:8px;bottom:12px;overflow:visible}.dash-kpi svg path{fill:none;stroke:#9be36b;stroke-width:2.4;filter:drop-shadow(0 0 3px #9be36b);stroke-dasharray:100;stroke-dashoffset:100;animation:drawSpark 3s ease-in-out infinite alternate}.dash-kpi svg.redline path{stroke:#ed796d}.alert-kpi{border-color:#543638}.alert-kpi b{display:flex;align-items:baseline;gap:4px}.alert-kpi b strong{margin-left:8px;color:#ff8c7b}.kpi-sub{font-size:8.4px!important;color:#82999f!important;letter-spacing:0!important}.alert-pulse-native{position:absolute;right:9px;top:9px;width:15px;height:15px;border-radius:50%;display:grid;place-items:center;background:#612e2c;color:#ff9a8d;font-size:10.8px;animation:alertBeat 1s infinite}
+.dash-middle{display:grid;grid-template-columns:1.03fr 1.55fr .92fr;gap:9px;align-items:stretch}
+.dash-widget{min-width:0;background:linear-gradient(145deg,#10232b,#0b1920);border:1px solid #25434c;border-radius:7px;padding:12px;overflow:hidden}
+.widget-head{display:flex;align-items:center;justify-content:space-between;gap:8px}.widget-head h4{margin:3px 0 0;font-size:14.4px;font-weight:650}.trend-tag{font-size:9.6px;color:#9be36b;background:#18372d;border:1px solid #2d654c;padding:4px 6px;border-radius:4px;white-space:nowrap}.profit-total{font-size:25.2px;font-weight:750;margin-top:11px}.profit-total small{display:block;font-size:9.6px;color:#829da4;font-weight:400}.profit-chart{width:100%;height:115px;margin-top:5px;overflow:visible}.chart-grid path{stroke:#28424a;stroke-width:1;stroke-dasharray:3 5}.profit-area{fill:url(#profitFillNative);animation:areaPulse 4s ease-in-out infinite alternate}.profit-line{fill:none;stroke:#8fe875;stroke-width:3;stroke-linecap:round;filter:drop-shadow(0 0 5px #8fe875);stroke-dasharray:700;stroke-dashoffset:700;animation:drawProfit 4s ease-in-out infinite alternate}.chart-marker{fill:#d8ff9b;stroke:#6be5b2;stroke-width:3;filter:drop-shadow(0 0 6px #9be36b)}.chart-labels{fill:#78939b;font-size:10.8px}
+.route-widget{display:flex;flex-direction:column}.route-head{margin-bottom:8px}.live-tag{font-size:8.4px;color:#9be36b;white-space:nowrap}.native-map{position:relative;flex:1;min-height:185px;border:1px solid #1b4c58;border-radius:5px;overflow:hidden;background:#071923}.native-route-svg{display:block;width:100%;height:100%;min-height:185px}.map-streets path{stroke:#255061;stroke-width:1.2;fill:none;opacity:.58}.native-route-track{fill:none;stroke:#1b5360;stroke-width:9;stroke-linecap:round;stroke-linejoin:round;opacity:.35}.native-route-glow{fill:none;stroke:url(#nativeRouteGradient);stroke-width:3.8;stroke-linecap:round;stroke-linejoin:round;filter:url(#nativeGlow)}.origin-dot{fill:#20d8c0;stroke:#b5fff0;stroke-width:2;filter:url(#nativeGlow)}.destination-dot{fill:#ff927d;stroke:#ffe0cb;stroke-width:2;filter:url(#nativeGlow)}.moving-truck-native{offset-path:path("M54px 208px C82px 202px 88px 168px 122px 166px L180px 166px Q205px 166px 216px 190px L260px 190px Q278px 190px 292px 151px L320px 118px Q332px 103px 352px 110px L394px 130px L422px 85px Q430px 70px 449px 76px L495px 88px L525px 42px Q533px 28px 548px 30px");animation:truckTravel 7s linear infinite;display:none}
+.map-origin,.map-destination{position:absolute;font-size:8.4px;font-weight:800;color:#061419;background:#28d9be;border-radius:3px;padding:3px 5px;left:7%;bottom:10%}.map-destination{left:auto;right:8%;top:8%;bottom:auto;background:#ff9b83}.map-origin span,.map-destination span{color:#092027;margin-left:3px}.route-vehicle-info{position:absolute;right:8px;bottom:8px;padding:7px 9px;background:#08171edb;border:1px solid #37635b;border-radius:5px;min-width:102px;box-shadow:0 0 20px #0007}.route-vehicle-info small{display:block;color:#9be36b;font-size:8.4px;letter-spacing:.06em}.route-vehicle-info b{display:block;font-size:19.2px;margin:2px 0}.route-vehicle-info>span{display:block;color:#89a2a7;font-size:8.4px;margin-top:4px}.speed-track{height:4px;background:#243e45;border-radius:9px}.speed-track i{display:block;width:68%;height:100%;border-radius:9px;background:linear-gradient(90deg,#20cbb5,#9be36b);animation:speedPulse 1.1s ease-in-out infinite alternate}
+.efficiency-widget{display:flex;flex-direction:column}.efficiency-number{font-size:32.4px;font-weight:750;color:#9be36b;margin:10px 0 -58px 5px;z-index:1}.efficiency-number small{font-size:14.4px}.efficiency-ring{width:105px;height:105px;margin:0 auto 8px;border-radius:50%;background:conic-gradient(#9be36b 0 86%,#203b43 86% 100%);display:grid;place-items:center;position:relative}.efficiency-ring:before{content:"";position:absolute;inset:9px;border-radius:50%;background:#0e2027}.efficiency-ring div{position:relative;text-align:center}.efficiency-ring b{display:block;font-size:19.2px}.efficiency-ring small{display:block;color:#829ba1;font-size:8.4px}.efficiency-legend{display:grid;gap:6px;margin-top:auto}.efficiency-legend span{display:flex;align-items:center;gap:5px;color:#91a8ad;font-size:8.4px}.efficiency-legend span b{margin-left:auto;color:#dce9e9}.efficiency-legend i{width:6px;height:6px;border-radius:50%;background:#9be36b}.efficiency-legend span:nth-child(2) i{background:#25c8bc}.efficiency-legend span:nth-child(3) i{background:#687d83}
+.dash-bottom-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:9px;align-items:stretch}
+.bottom-widget{min-height:180px}.bottom-big{font-size:28.8px;font-weight:750;margin:12px 0 4px}.cost-bars-svg{width:100%;height:65px;display:block}.cost-bars-svg rect{fill:url(#barGradientNative);fill:#35cbb4;transform-box:fill-box;transform-origin:bottom;animation:barsNative 1.5s ease-in-out infinite alternate}.cost-bars-svg rect:nth-child(2n){animation-delay:.2s}.cost-widget>small{font-size:8.4px;color:#829ba1}
+.cost-row{display:grid;grid-template-columns:1fr auto;gap:5px 8px;margin-top:10px;color:#9bb0b5;font-size:9.6px}.cost-row b{color:#dce8e9}.cost-row i{grid-column:1/-1;height:5px;background:#233c44;border-radius:10px;overflow:hidden}.cost-row em{display:block;height:100%;background:linear-gradient(90deg,#20c9b5,#9be36b);border-radius:10px;animation:barGrow 1.5s ease-out both}
+.driver-list{display:grid;gap:9px;margin-top:12px}.driver-list>div{display:flex;align-items:center;gap:7px}.driver-avatar{width:24px;height:24px;border-radius:50%;display:grid;place-items:center;background:#1b4645;color:#a9ed9a;font-size:8.4px;font-weight:700}.driver-list span:nth-child(2){display:flex;flex-direction:column;min-width:0}.driver-list b{font-size:9.6px}.driver-list small{font-size:8.4px;color:#819ba1}.driver-list strong{margin-left:auto;color:#9be36b;font-size:12px}
+.insight-spark{color:#a5ef6d;font-size:20.4px}.insight-row{padding:7px 8px;margin-top:7px;border-radius:4px;background:#14262c;border:1px solid #29434b}.insight-row b{display:block;font-size:9.6px}.insight-row small{display:block;font-size:8.4px;color:#91a6aa;margin-top:3px}.insight-row.red b{color:#ff8979}.insight-row.green b{color:#9be36b}.insight-row.gold b{color:#e6d477}
+.hero-dashboard-foot{font-size:9.6px;padding:12px 5px 2px}
+@keyframes drawSpark{to{stroke-dashoffset:0}}@keyframes drawProfit{to{stroke-dashoffset:0}}@keyframes areaPulse{from{opacity:.55}to{opacity:1}}@keyframes alertBeat{0%,100%{transform:scale(1)}50%{transform:scale(1.18);box-shadow:0 0 14px #f66}}@keyframes speedPulse{from{width:48%}to{width:82%}}@keyframes barsNative{from{transform:scaleY(.72)}to{transform:scaleY(1)}}@keyframes barGrow{from{width:0}to{width:var(--bar-width,100%)}}@keyframes truckTravel{0%{offset-distance:0%}50%{offset-distance:100%}100%{offset-distance:0%}}
+@media(max-width:900px){.hero-dashboard-screen.dashboard-native{grid-template-columns:112px minmax(0,1fr)}.dash-sidebar{padding:12px 8px}.dash-nav{font-size:9.6px;padding:8px 5px}.dash-main{padding:10px}.dash-middle{grid-template-columns:1fr 1.4fr}.efficiency-widget{grid-column:1/-1;display:grid;grid-template-columns:1fr 100px 1fr;align-items:center}.efficiency-widget .widget-head{grid-column:1/-1}.efficiency-number{margin:0;font-size:26.4px}.efficiency-ring{width:82px;height:82px;margin:0}.efficiency-legend{margin:0}.dash-bottom-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:620px){.hero-dashboard{padding:7px}.hero-dashboard-top{font-size:7.2px}.hero-dashboard-screen.dashboard-native{grid-template-columns:1fr}.dash-sidebar{display:none}.dash-main{padding:8px;gap:7px}.dash-main-head h3{font-size:16.8px}.dash-main-head small{font-size:7.2px}.dash-main-head span{font-size:8.4px}.dash-period{font-size:8.4px;padding:6px}.dash-kpis{grid-template-columns:repeat(2,minmax(0,1fr));gap:6px}.dash-kpi{min-height:68px;padding:8px;gap:6px}.kpi-icon{flex-basis:21px;height:21px;font-size:14.4px}.dash-kpi small{font-size:7.2px}.dash-kpi b{font-size:18px}.dash-kpi em{font-size:8.4px}.dash-kpi svg{width:35px;right:5px}.dash-middle{grid-template-columns:1fr 1fr;gap:6px}.dash-widget{padding:9px}.profitability-widget{grid-column:1/-1}.profit-chart{height:100px}.route-widget{grid-column:1/-1;min-height:210px}.native-map,.native-route-svg{min-height:180px}.efficiency-widget{grid-column:1/-1;grid-template-columns:1fr 80px 1fr}.efficiency-ring{width:75px;height:75px}.dash-bottom-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:6px}.bottom-widget{min-height:165px}.widget-head h4{font-size:12px}.bottom-big{font-size:24px}.hero-dashboard-foot{font-size:7.2px}}
+
+
+/* V12 — KPIs limpos, caminhão lento na rota e painel de eficiência alinhado */
+.dash-kpi>svg{display:none!important}
+.efficiency-widget{
+  display:grid;
+  grid-template-columns:minmax(65px,.75fr) 105px minmax(0,1.2fr);
+  grid-template-rows:auto 1fr;
+  align-items:center;
+  column-gap:10px;
+  row-gap:12px;
+}
+.efficiency-widget>.widget-head{grid-column:1/-1;width:100%}
+.efficiency-number{
+  grid-column:1;grid-row:2;
+  margin:0!important;
+  padding:0;
+  text-align:center;
+  font-size:clamp(27.6px,2.64vw,36px);
+  line-height:1;
+  white-space:nowrap;
+  align-self:center;
+}
+.efficiency-number small{font-size:14.4px}
+.efficiency-ring{
+  grid-column:2;grid-row:2;
+  width:96px;height:96px;
+  margin:0 auto!important;
+  align-self:center;
+}
+.efficiency-ring div{display:grid;place-items:center}
+.efficiency-ring b{font-size:20.4px}
+.efficiency-ring small{display:none!important}
+.efficiency-legend{
+  grid-column:3;grid-row:2;
+  width:100%;
+  margin:0!important;
+  align-self:center;
+  gap:9px;
+}
+.efficiency-legend span{font-size:9.6px;white-space:nowrap}
+.efficiency-legend span b{font-size:9.6px}
+.map-truck{pointer-events:none}
+.map-truck rect{filter:drop-shadow(0 0 4px #9be36b)}
+@media(max-width:900px){
+  .efficiency-widget{grid-template-columns:minmax(48px,.7fr) 82px minmax(0,1.3fr);column-gap:7px}
+  .efficiency-ring{width:78px;height:78px}
+  .efficiency-ring:before{inset:7px}
+  .efficiency-legend{gap:7px}
+  .efficiency-legend span{font-size:8.4px}
+}
+@media(max-width:620px){
+  .efficiency-widget{grid-template-columns:minmax(45px,.7fr) 76px minmax(0,1.3fr);column-gap:7px;row-gap:9px}
+  .efficiency-number{font-size:27.6px}
+  .efficiency-ring{width:72px;height:72px}
+  .efficiency-ring:before{inset:7px}
+  .efficiency-ring b{font-size:16.8px}
+  .efficiency-legend{gap:7px}
+  .efficiency-legend span{font-size:8.4px}
+  .efficiency-legend span b{font-size:8.4px}
+}
+
+
+
+/* V13 — reorganização dos indicadores e responsividade integral */
+.dash-bottom-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;align-items:stretch}
+.dash-bottom-grid>.bottom-widget{min-width:0;min-height:205px}
+.dash-bottom-grid>.insights-widget{grid-column:1/-1;min-height:0;padding:16px 18px 12px;border-color:#28534f;background:linear-gradient(115deg,#10252b 0%,#0b1a20 58%,#102b2b 100%)}
+.insights-widget .widget-head{margin-bottom:12px}
+.insight-live{display:flex;align-items:center;gap:7px;color:#9be36b;font-size:9.6px;letter-spacing:.08em;white-space:nowrap}
+.insight-live i,.insight-foot i{display:inline-block;width:7px;height:7px;border-radius:50%;background:#9be36b;box-shadow:0 0 10px #9be36b;animation:insightPulse 1.8s ease-in-out infinite}
+.insight-stage{min-height:112px;padding:14px 16px;border:1px solid #294b4e;border-radius:6px;background:linear-gradient(110deg,#0b1b21,#10272b);transition:opacity .45s ease,transform .45s ease}
+.insight-stage.is-changing{opacity:0;transform:translateY(5px)}
+.insight-meta{display:flex;justify-content:space-between;gap:10px;color:#9be36b;font-size:9.6px;letter-spacing:.1em;margin-bottom:9px}
+.insight-meta span:last-child{color:#77939a}
+.insight-stage>b{display:block;color:#e5f0ef;font-size:16.8px;line-height:1.45;margin-bottom:5px}
+.insight-stage>p{color:#9bb1b4;font-size:12px;line-height:1.65;margin:0;max-width:950px}
+.insight-impact{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:12px;padding-top:9px;border-top:1px solid #ffffff12}
+.insight-impact span{color:#78959a;font-size:8.4px;letter-spacing:.12em}
+.insight-impact strong{color:#a6ed75;font-size:12px}
+.insight-progress{height:2px;background:#203a40;margin:11px 0 8px;overflow:hidden;border-radius:5px}
+.insight-progress i{display:block;width:0;height:100%;background:linear-gradient(90deg,#25cbbb,#9be36b);box-shadow:0 0 8px #9be36b}
+.insight-progress i.run{animation:insightTimer 6.5s linear forwards}
+.insight-foot{display:flex;justify-content:space-between;gap:10px;color:#779198;font-size:8.4px}
+.insight-foot span:first-child{display:flex;align-items:center;gap:6px}
+@keyframes insightPulse{0%,100%{opacity:.55;transform:scale(.9)}50%{opacity:1;transform:scale(1.15)}}
+@keyframes insightTimer{from{width:0}to{width:100%}}
+
+/* Fluid dashboard and report layouts: desktop, tablet, mobile and narrow phones */
+.hero-dashboard,.hero-dashboard-screen,.dash-main,.dash-widget,.bottom-widget,.reports-console,.demo,.dash,.panel{min-width:0;max-width:100%}
+.hero-dashboard-screen.dashboard-native{width:100%;}
+.dash-main-head>div:first-child{min-width:0}
+.dash-main-head h3,.dash-main-head span,.widget-head h4{overflow-wrap:anywhere}
+.dash-kpi{min-width:0}
+.dash-kpi small{white-space:normal;line-height:1.35}
+.dash-middle{grid-template-columns:minmax(0,1fr) minmax(0,1.45fr);}
+.profitability-widget{grid-column:auto}
+.route-widget{grid-column:auto}
+.profit-chart{min-height:100px}
+.native-map{min-width:0}
+.dash-bottom-grid>*{min-width:0}
+.reports-console,.demo,.dash{width:100%;}
+.tabs{display:flex;flex-wrap:wrap;gap:7px}
+.tab{min-width:0;white-space:normal}
+.kpis{grid-template-columns:repeat(4,minmax(0,1fr))}
+.lower{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr);gap:12px}
+.lower>.panel{min-width:0}
+.chart{width:100%;min-width:0;overflow:hidden}
+.chart svg{display:block;width:100%;height:100%;max-width:100%}
+.alert-row,.rank{min-width:0;overflow-wrap:anywhere}
+
+@media(max-width:1100px){
+ .hero-dashboard-screen.dashboard-native{grid-template-columns:112px minmax(0,1fr)}
+ .dash-main{padding:11px;gap:9px}
+ .dash-kpis{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .dash-middle{grid-template-columns:minmax(0,1fr) minmax(0,1.25fr)}
+ .dash-bottom-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+ .dash-bottom-grid>.bottom-widget{min-height:190px}
+ .kpis{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media(max-width:760px){
+ .hero-dashboard-screen.dashboard-native{grid-template-columns:1fr}
+ .dash-sidebar{display:none}
+ .dash-main{padding:10px}
+ .dash-middle{grid-template-columns:minmax(0,1fr) minmax(0,1.2fr)}
+ .profit-chart{height:125px}
+ .dash-bottom-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .dash-bottom-grid>.insights-widget{grid-column:1/-1}
+ .lower{grid-template-columns:1fr}
+ .panel{padding:12px}
+ .chart{height:210px}
+ .dashhead{display:flex;flex-wrap:wrap;gap:8px}
+ .dashhead>div:first-child{min-width:0}
+}
+@media(max-width:520px){
+ .hero-dashboard{padding:6px}
+ .hero-dashboard-top{display:flex;flex-wrap:wrap;gap:6px;font-size:8.4px}
+ .dash-main{padding:7px;gap:7px}
+ .dash-main-head{align-items:flex-start}
+ .dash-main-head h3{font-size:15.6px}
+ .dash-main-head span{font-size:8.4px}
+ .dash-period{font-size:8.4px;padding:6px;white-space:normal}
+ .dash-kpis{grid-template-columns:repeat(2,minmax(0,1fr));gap:6px}
+ .dash-kpi{min-height:70px;padding:7px;gap:5px}
+ .dash-kpi b{font-size:16.8px}
+ .dash-kpi small{font-size:7.2px}
+ .dash-kpi em{font-size:7.2px;white-space:normal}
+ .kpi-icon{flex-basis:20px;height:20px}
+ .dash-middle{grid-template-columns:1fr;gap:7px}
+ .profitability-widget,.route-widget{grid-column:1/-1}
+ .profit-chart{height:135px}
+ .native-map,.native-route-svg{min-height:190px}
+ .route-vehicle-info{right:6px;bottom:6px;min-width:90px;padding:6px}
+ .dash-bottom-grid{grid-template-columns:1fr;gap:7px}
+ .dash-bottom-grid>.bottom-widget{min-height:0;padding:12px}
+ .dash-bottom-grid>.insights-widget{grid-column:1;}
+ .cost-widget,.composition-widget,.driver-widget{min-height:160px!important}
+ .insight-stage{padding:11px;min-height:130px}
+ .insight-stage>b{font-size:14.4px}
+ .insight-stage>p{font-size:10.8px}
+ .insight-meta{font-size:8.4px}
+ .insight-impact{align-items:flex-start;flex-direction:column;gap:4px}
+ .insight-foot{font-size:7.2px;flex-wrap:wrap}
+ .hero-dashboard-foot{display:flex;flex-wrap:wrap;gap:6px;font-size:7.2px}
+ .reports-console{padding:7px}
+ .demo-top{display:flex;flex-wrap:wrap;gap:8px;align-items:flex-start}
+ .demo-top b,.demo-top .status{font-size:8.4px;line-height:1.5}
+ .tabs{gap:5px;padding:8px}
+ .tab{flex:1 1 calc(50% - 5px);font-size:8.4px;padding:8px 5px}
+ .dash{padding:8px}
+ .dashhead h3{font-size:15.6px}
+ .dashhead p{font-size:10.8px;line-height:1.5}
+ .kpis{grid-template-columns:repeat(2,minmax(0,1fr));gap:6px}
+ .kpi{min-width:0;padding:9px}
+ .kpi b{font-size:18px;overflow-wrap:anywhere}
+ .kpi small,.kpi em{font-size:8.4px}
+ .lower{grid-template-columns:1fr;gap:8px}
+ .chart{height:180px}
+ .alert-row{gap:7px;padding:9px 7px}
+ .alert-row b{font-size:10.8px}
+ .alert-row small{font-size:8.4px;line-height:1.4}
+ .insight-strip{gap:8px;padding:10px}
+ .note{font-size:8.4px;line-height:1.5}
+}
+@media(max-width:360px){
+ .dash-kpis,.kpis{grid-template-columns:1fr}
+ .dash-kpi{min-height:62px}
+ .tab{flex-basis:100%}
+ .insight-live{font-size:7.2px}
+ .insight-stage>b{font-size:13.2px}
+ .route-vehicle-info{transform:scale(.9);transform-origin:bottom right}
+}
+@media(prefers-reduced-motion:reduce){.insight-stage,.insight-live i{transition:none;animation:none!important}.insight-progress i.run{animation:none;width:100%}}
+
+
+/* V14 — desempenho anual, indicadores operacionais, consumo semanal e responsividade real */
+.dash-nav{display:grid;grid-template-columns:16px minmax(0,1fr);align-items:center;column-gap:9px}
+.dash-nav>span{display:flex;align-items:center;gap:7px;min-width:0}
+.dash-nav>span i{float:none;flex:0 0 auto;margin-left:auto}
+.dash-kpi{gap:9px;padding:11px 12px}
+.dash-kpi small{white-space:normal;line-height:1.3;font-size:8.4px}
+.dash-kpi b{font-size:clamp(18px,1.8vw,24px);white-space:normal;overflow-wrap:anywhere}
+.dash-kpi em{font-size:9.6px;white-space:normal}
+.dash-kpi svg{display:none!important}
+.alert-kpi b{display:flex;flex-wrap:wrap;align-items:baseline;gap:5px 12px}
+.alert-kpi b .alert-open,.alert-kpi b .alert-critical{display:inline-flex;align-items:baseline;gap:4px;white-space:nowrap}
+.alert-kpi b .alert-critical{color:#ff8c7b}
+.alert-kpi b .alert-critical strong{margin:0}
+.alert-kpi b small{font-size:9.6px;color:#82999f;letter-spacing:0;font-weight:500}
+.alert-pulse-native{right:10px;top:10px}
+.profitability-widget{grid-column:1/-1}
+.annual-head h4{font-size:16.8px}
+.annual-summary{display:flex;justify-content:space-between;align-items:end;gap:12px;margin-top:12px}
+.annual-summary>div:first-child{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+.annual-summary strong{font-size:clamp(30px,3.6vw,40.8px);line-height:1;color:#9be36b}
+.annual-summary span{font-size:10.8px;color:#8fa8ad}
+.annual-summary-note{display:flex;align-items:center;gap:6px;white-space:nowrap}
+.annual-dot{width:7px;height:7px;border-radius:50%;background:#9be36b;box-shadow:0 0 9px #9be36b}
+.annual-chart{height:clamp(150px,19vw,210px);margin-top:9px;overflow:visible}
+.annual-area{fill:url(#annualFill)}
+.annual-realized{fill:none;stroke:#9be36b;stroke-width:3.2;stroke-linecap:round;stroke-linejoin:round;filter:drop-shadow(0 0 4px #9be36b66)}
+.annual-projection{fill:none;stroke:#35cbb5;stroke-width:3.2;stroke-dasharray:8 7;stroke-linecap:round;stroke-linejoin:round}
+.annual-current-line{stroke:#9be36b;stroke-width:1;stroke-dasharray:4 5;opacity:.7}
+.annual-current-point{fill:#9be36b;stroke:#eaffdc;stroke-width:2}
+.annual-projection-point{fill:#35cbb5;stroke:#c6fff1;stroke-width:1.5}
+.annual-current-label,.annual-projection-label{fill:#9be36b;font-size:12px;font-weight:700;letter-spacing:.06em}
+.annual-projection-label{fill:#35cbb5}
+.annual-months text{text-anchor:middle;font-size:12px}
+.annual-months .current-month{fill:#9be36b;font-weight:800}
+.annual-legend{display:flex;gap:18px;align-items:center;flex-wrap:wrap;margin-top:0;color:#8fa8ad;font-size:9.6px}
+.annual-legend span{display:flex;align-items:center;gap:6px}
+.annual-legend i{display:inline-block;width:18px;height:3px;border-radius:3px;background:#9be36b}
+.annual-legend .projection-key{background:repeating-linear-gradient(90deg,#35cbb5 0 5px,transparent 5px 8px)}
+.annual-indicators{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin-top:13px;padding-top:12px;border-top:1px solid #ffffff14}
+.annual-indicators>div{min-width:0;padding:0 8px;border-right:1px solid #ffffff12}
+.annual-indicators>div:first-child{padding-left:0}
+.annual-indicators>div:last-child{border:0}
+.annual-indicators small{display:block;color:#7fa2a8;font-size:8.4px;letter-spacing:.07em;line-height:1.35}
+.annual-indicators b{display:block;margin:4px 0 1px;font-size:19.2px;color:#e8f2f2}
+.annual-indicators span{display:block;color:#819ba1;font-size:8.4px}
+.dash-bottom-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:9px}
+.bottom-widget{min-height:0}
+.cost-widget .bottom-big{margin:8px 0 10px}
+.cost-bars-svg rect{animation:none!important;transform:none!important}
+.fuel-mini-title,.fuel-hour-head{font-size:8.4px;letter-spacing:.08em;color:#83a2a8}
+.fuel-week-bars{width:100%;height:83px;display:block;margin-top:4px;overflow:visible}
+.fuel-bars rect{fill:#32c7b1}
+.fuel-week-labels{fill:#829ba1;font-size:10.8px;text-anchor:middle}
+.fuel-hour-head{display:flex;justify-content:space-between;gap:8px;margin-top:8px}
+.fuel-hour-head small{font-size:8.4px;color:#9be36b}
+.fuel-hour-line{width:100%;height:54px;display:block;margin-top:2px;overflow:visible}
+.fuel-hour-grid{fill:none;stroke:#29434b;stroke-width:1;stroke-dasharray:3 4}
+.fuel-hour-path{fill:none;stroke:#9be36b;stroke-width:2.4;stroke-linecap:round;filter:drop-shadow(0 0 3px #9be36b55)}
+.fuel-hour-labels{fill:#829ba1;font-size:9.6px}
+.cost-caption{display:block;color:#829ba1;font-size:8.4px;margin-top:3px;line-height:1.4}
+.dash-insights-row{margin-top:9px}
+.dash-insights-row .insights-widget{width:100%;min-height:0}
+@media(max-width:1100px){
+ .hero-dashboard-screen.dashboard-native{grid-template-columns:112px minmax(0,1fr)}
+ .dash-kpis{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .dash-middle{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+ .profitability-widget{grid-column:1/-1}
+ .dash-bottom-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+}
+@media(max-width:760px){
+ .hero-dashboard-screen.dashboard-native{grid-template-columns:1fr}
+ .dash-sidebar{display:none}
+ .dash-main{padding:10px}
+ .dash-kpis{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .dash-middle{grid-template-columns:minmax(0,1fr) minmax(0,1.15fr)}
+ .profitability-widget,.route-widget{grid-column:1/-1}
+ .dash-bottom-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .dash-bottom-grid>.driver-widget{grid-column:1/-1}
+ .annual-indicators{grid-template-columns:repeat(2,minmax(0,1fr));row-gap:10px}
+ .annual-indicators>div:nth-child(2){border-right:0}
+ .annual-indicators>div:nth-child(3){padding-left:0}
+}
+@media(max-width:560px){
+ .hero-dashboard{padding:6px}
+ .dash-main{padding:7px;gap:7px}
+ .dash-main-head{align-items:flex-start}
+ .dash-main-head h3{font-size:15.6px}
+ .dash-kpis{grid-template-columns:repeat(2,minmax(0,1fr));gap:6px}
+ .dash-kpi{min-height:66px;padding:8px;gap:6px}
+ .kpi-icon{flex:0 0 21px;height:21px;font-size:14.4px}
+ .dash-kpi small{font-size:7.2px}
+ .dash-kpi b{font-size:18px}
+ .dash-kpi em{font-size:8.4px}
+ .alert-kpi b{gap:3px 8px}
+ .alert-kpi b small{font-size:7.2px}
+ .alert-pulse-native{width:13px;height:13px;right:7px;top:7px}
+ .dash-middle{grid-template-columns:1fr;gap:7px}
+ .profitability-widget,.route-widget{grid-column:1/-1}
+ .annual-chart{height:155px}
+ .annual-summary strong{font-size:32.4px}
+ .annual-summary span{font-size:9.6px}
+ .annual-current-label,.annual-projection-label{font-size:10.8px}
+ .annual-months text{font-size:10.8px}
+ .annual-indicators{gap:9px 5px}
+ .annual-indicators>div{padding:0 6px}
+ .annual-indicators small{font-size:7.2px}
+ .annual-indicators b{font-size:18px}
+ .annual-indicators span{font-size:8.4px}
+ .dash-bottom-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:7px}
+ .dash-bottom-grid>.bottom-widget{padding:10px;min-height:0}
+ .dash-bottom-grid>.driver-widget{grid-column:1/-1}
+ .cost-widget .bottom-big{font-size:25.2px}
+ .composition-widget .cost-row{font-size:9.6px}
+ .driver-list{gap:8px}
+ .driver-list>div{gap:6px}
+ .driver-list b{font-size:9.6px}
+ .driver-list small{font-size:8.4px}
+ .driver-list strong{font-size:12px}
+ .dash-insights-row{margin-top:7px}
+ .insight-stage{padding:11px;min-height:120px}
+ .insight-stage>b{font-size:14.4px}
+ .insight-stage>p{font-size:10.8px}
+}
+@media(max-width:390px){
+ .dash-bottom-grid{grid-template-columns:1fr}
+ .dash-bottom-grid>.driver-widget{grid-column:auto}
+ .annual-months text{font-size:9.6px}
+ .annual-indicators b{font-size:16.8px}
+ .fuel-week-labels{font-size:9.6px}
+}
+@media(max-height:520px) and (orientation:landscape){
+ .hero-dashboard{padding:6px}
+ .hero-dashboard-screen.dashboard-native{grid-template-columns:88px minmax(0,1fr)}
+ .dash-sidebar{display:flex;padding:7px 5px}
+ .dash-logo{font-size:9.6px;margin-bottom:8px}
+ .dash-nav{font-size:8.4px;min-height:25px;padding:5px 3px;gap:5px}
+ .dash-main{padding:7px;gap:6px}
+ .dash-main-head h3{font-size:14.4px}
+ .dash-kpi{min-height:56px;padding:6px}
+ .dash-kpi b{font-size:15.6px}
+ .dash-middle{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+ .profitability-widget{grid-column:1/-1}
+ .annual-chart{height:125px}
+ .dash-bottom-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+ .dash-bottom-grid>.driver-widget{grid-column:auto}
+ .dash-insights-row{margin-top:6px}
+}
+@media(prefers-reduced-motion:reduce){
+ .cost-bars-svg rect,.insight-stage,.insight-live i{animation:none!important}
+}
+
+
+/* V15 — layout refinado, tipografia consistente e orientação horizontal */
+.hero-dashboard-screen.dashboard-native{
+  grid-template-columns:150px minmax(0,1fr);
+  align-items:stretch;
+}
+.dash-sidebar{width:100%;min-width:0}
+.dash-nav{min-width:0;white-space:nowrap}
+.dash-nav>span{white-space:nowrap;overflow:visible}
+.dash-nav>span small{white-space:normal}
+.dash-main{min-width:0;width:100%}
+.dash-main-head{min-width:0}
+.dash-main-head>div:first-child{min-width:0}
+.dash-main-head small{display:block;font-size:9.6px;line-height:1.4;letter-spacing:.12em}
+.dash-main-head h3{font-size:clamp(18px,1.74vw,22.8px);line-height:1.2;margin:4px 0 5px}
+.dash-main-head span{display:block;font-size:9.6px;line-height:1.4}
+.widget-head small{font-size:9.6px;line-height:1.35;letter-spacing:.11em}
+.widget-head h4{font-size:14.4px;line-height:1.3;margin:4px 0 0}
+.dash-widget{min-width:0}
+.dash-bottom-grid{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:10px;
+  align-items:stretch;
+}
+.dash-bottom-grid>.cost-widget{grid-column:1/-1}
+.dash-bottom-grid>.composition-widget,
+.dash-bottom-grid>.driver-widget{grid-column:auto}
+.cost-widget{min-height:0}
+.cost-widget .fuel-week-bars{height:96px;margin-top:7px}
+.fuel-week-labels{font-family:inherit;font-size:10.8px;font-weight:500;letter-spacing:0;dominant-baseline:auto}
+.fuel-mini-title,.fuel-hour-head{font-family:inherit;font-size:9.6px;line-height:1.4;letter-spacing:.08em}
+.fuel-hour-head{margin-top:12px}
+.fuel-hour-line{height:64px;margin-top:6px}
+.fuel-hour-labels{font-family:inherit;font-size:9.6px;letter-spacing:0}
+.cost-caption{font-size:9.6px;line-height:1.5;margin-top:7px}
+.composition-widget .cost-row{font-size:10.8px;line-height:1.4;margin-top:13px;gap:7px 9px}
+.composition-widget .cost-row i{height:6px}
+.driver-list{gap:12px}
+.driver-list>div{gap:9px;min-width:0}
+.driver-list b{font-size:10.8px;line-height:1.3}
+.driver-list small{font-size:9.6px;line-height:1.4}
+.driver-list strong{font-size:13.2px;white-space:nowrap}
+.driver-avatar{flex:0 0 28px;width:28px;height:28px;font-size:9.6px}
+.insight-stage>b{font-size:15.6px;line-height:1.45}
+.insight-stage>p{font-size:12px;line-height:1.65}
+.insight-meta,.insight-foot{font-size:9.6px;line-height:1.5}
+.native-map{width:100%;min-width:0;min-height:220px;aspect-ratio:2.05/1}
+.native-route-svg{width:100%;height:100%;min-height:0}
+.map-truck{pointer-events:none}
+.dash-bottom-grid .bottom-widget{height:100%}
+
+/* Tablet landscape and phone landscape: use the available width, not portrait sizing. */
+@media (orientation:landscape) and (max-width:1100px){
+  .hero-dashboard{width:100%;max-width:100%;padding:8px}
+  .hero-dashboard-screen.dashboard-native{
+    width:100%;
+    grid-template-columns:118px minmax(0,1fr);
+  }
+  .dash-sidebar{display:flex;padding:10px 7px;gap:5px}
+  .dash-logo{font-size:9.6px;gap:6px;margin-bottom:8px}
+  .dash-logo-mark{width:24px;height:24px;font-size:20.4px}
+  .dash-nav{font-size:9.6px;min-height:30px;padding:6px 4px;gap:6px}
+  .dash-nav>span{font-size:9.6px}
+  .dash-nav>span small{font-size:8.4px}
+  .dash-main{padding:10px;gap:9px}
+  .dash-main-head{align-items:center}
+  .dash-main-head small{font-size:9.6px}
+  .dash-main-head h3{font-size:19.2px}
+  .dash-main-head span{font-size:9.6px}
+  .dash-kpis{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .dash-middle{grid-template-columns:minmax(0,1fr);gap:9px}
+  .profitability-widget,.route-widget{grid-column:1/-1}
+  .annual-chart{height:145px}
+  .native-map{min-height:clamp(220px,38vh,330px);aspect-ratio:2.2/1}
+  .native-route-svg{min-height:0}
+  .dash-bottom-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
+  .dash-bottom-grid>.cost-widget{grid-column:1/-1}
+  .dash-bottom-grid>.composition-widget,.dash-bottom-grid>.driver-widget{grid-column:auto}
+  .dash-insights-row{margin-top:8px}
+}
+
+/* Portrait phones: preserve a compact two-column lower row where readable. */
+@media (max-width:560px) and (orientation:portrait){
+  .dash-bottom-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:7px}
+  .dash-bottom-grid>.cost-widget{grid-column:1/-1}
+  .dash-bottom-grid>.composition-widget,
+  .dash-bottom-grid>.driver-widget{grid-column:auto}
+  .dash-bottom-grid .bottom-widget{padding:10px;min-height:0}
+  .fuel-week-bars{height:82px}
+  .fuel-week-labels{font-size:9.6px}
+  .composition-widget .cost-row{font-size:9.6px;margin-top:10px}
+  .driver-list{gap:9px}
+  .driver-list>div{gap:6px}
+  .driver-avatar{flex-basis:23px;width:23px;height:23px;font-size:8.4px}
+  .driver-list b{font-size:9.6px}
+  .driver-list small{font-size:8.4px}
+  .driver-list strong{font-size:10.8px}
+  .widget-head h4{font-size:12px}
+  .dash-main-head small{font-size:7.2px;letter-spacing:.09em}
+  .dash-main-head h3{font-size:15.6px}
+}
+
+/* Very narrow portrait screens: stack only the two compact cards to avoid crowding. */
+@media (max-width:380px) and (orientation:portrait){
+  .dash-bottom-grid{grid-template-columns:1fr}
+  .dash-bottom-grid>.cost-widget{grid-column:auto}
+}
+
+/* Wider desktop: balanced dashboard grid and consistent title scale. */
+@media (min-width:1101px){
+  .dash-bottom-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .dash-bottom-grid>.cost-widget{grid-column:1/-1}
+}
+
+
+/* V16 — correção estrutural: o painel ocupa toda a largura disponível */
+.hero-dashboard{
+  display:block!important;
+  width:100%!important;
+  max-width:100%!important;
+  min-width:0!important;
+  box-sizing:border-box!important;
+}
+.hero-dashboard-screen.dashboard-native{
+  display:grid!important;
+  width:100%!important;
+  max-width:100%!important;
+  min-width:0!important;
+  box-sizing:border-box!important;
+  grid-template-columns:150px minmax(0,1fr);
+}
+.dash-sidebar,.dash-main{min-width:0!important;max-width:100%!important;box-sizing:border-box!important}
+.dash-main{width:100%!important;grid-column:auto;overflow:hidden}
+.dash-kpis,.dash-middle,.dash-bottom-grid{width:100%;min-width:0;box-sizing:border-box}
+.dash-kpi,.dash-widget,.bottom-widget{min-width:0!important;max-width:100%;box-sizing:border-box}
+.dash-kpi>div:nth-child(2){min-width:0;flex:1 1 auto}
+.dash-kpi small,.dash-kpi em{overflow-wrap:normal;word-break:normal}
+.dash-kpi b{font-size:clamp(15.6px,1.8vw,21.6px);letter-spacing:0}
+.alert-kpi b{flex-wrap:wrap;white-space:normal;gap:4px 8px}
+.alert-kpi b strong{margin-left:4px}
+.widget-head{min-width:0}
+.widget-head h4{overflow-wrap:normal;word-break:normal}
+.annual-summary,.annual-chart-wrap,.annual-indicators{min-width:0;max-width:100%}
+.annual-chart{display:block;width:100%;max-width:100%}
+.native-map,.native-route-svg{width:100%;max-width:100%;min-width:0;box-sizing:border-box}
+
+/* Mobile portrait: uma coluna real para o conteúdo, sem estreitar o dashboard */
+@media(max-width:760px) and (orientation:portrait){
+  .hero-dashboard{padding:7px!important}
+  .hero-dashboard-screen.dashboard-native{
+    display:block!important;
+    width:100%!important;
+    grid-template-columns:minmax(0,1fr)!important;
+  }
+  .dash-sidebar{display:none!important}
+  .dash-main{
+    display:flex!important;
+    width:100%!important;
+    max-width:100%!important;
+    padding:9px!important;
+  }
+  .dash-main-head{width:100%;display:flex;flex-wrap:wrap;align-items:flex-start}
+  .dash-main-head>div:first-child{flex:1 1 55%;min-width:0}
+  .dash-period{flex:0 0 auto;max-width:100%}
+  .dash-kpis{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important}
+  .dash-kpi{width:100%;min-width:0!important;min-height:76px}
+  .dash-kpi small{white-space:normal;font-size:8.4px}
+  .dash-kpi b{white-space:nowrap;font-size:clamp(15.6px,4.8vw,20.4px)}
+  .dash-kpi em{white-space:normal;font-size:8.4px;line-height:1.35}
+  .dash-middle{display:grid!important;grid-template-columns:minmax(0,1fr)!important}
+  .profitability-widget,.route-widget{grid-column:1/-1!important}
+  .native-map{min-height:210px!important;aspect-ratio:1.8/1}
+  .dash-bottom-grid{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important}
+  .dash-bottom-grid>.cost-widget{grid-column:1/-1!important}
+  .dash-bottom-grid>.composition-widget,
+  .dash-bottom-grid>.driver-widget{grid-column:auto!important}
+  .dash-insights-row,.dash-insights-row .insights-widget{width:100%!important;grid-column:1/-1!important}
+}
+
+/* Mobile landscape: painel largo e mapa/indicadores sem cortes */
+@media(max-width:900px) and (orientation:landscape){
+  .hero-dashboard{width:100%!important;padding:7px!important}
+  .hero-dashboard-screen.dashboard-native{
+    display:grid!important;
+    grid-template-columns:96px minmax(0,1fr)!important;
+    width:100%!important;
+  }
+  .dash-sidebar{display:flex!important;padding:8px 5px!important}
+  .dash-main{width:100%!important;padding:8px!important}
+  .dash-kpis{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+  .dash-middle{grid-template-columns:minmax(0,1fr) minmax(0,1fr)!important}
+  .profitability-widget,.route-widget{grid-column:1/-1!important}
+  .native-map{min-height:clamp(190px,42vh,300px)!important;aspect-ratio:2.15/1}
+  .dash-bottom-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+  .dash-bottom-grid>.cost-widget{grid-column:1/-1!important}
+  .dash-bottom-grid>.composition-widget,
+  .dash-bottom-grid>.driver-widget{grid-column:auto!important}
+}
+
+/* Telas estreitas: impedir quebra vertical de números e palavras isoladas */
+@media(max-width:390px) and (orientation:portrait){
+  .dash-kpi{gap:5px;padding:7px}
+  .kpi-icon{flex:0 0 22px}
+  .dash-kpi small{font-size:7.2px}
+  .dash-kpi b{font-size:15.6px}
+  .dash-kpi em{font-size:7.2px}
+  .alert-kpi b{align-items:baseline}
+  .alert-kpi b strong{margin-left:0}
+  .annual-summary strong{font-size:28.8px}
+  .annual-current-label,.annual-projection-label{font-size:9.6px}
+  .annual-indicators{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+}
+
+
+/* V17 — arquitetura de integração tecnológica na seção personalizada */
+.personalized-section{display:flex;flex-direction:column;gap:30px}
+.personalized-copy{max-width:850px}
+.personalized-copy p{max-width:780px}
+.tech-architecture{
+  width:100%;
+  min-height:0;
+  padding:20px;
+  border:1px solid #42cfc077;
+  border-radius:8px;
+  background:
+    linear-gradient(#5ed6d008 1px,transparent 1px),
+    linear-gradient(90deg,#5ed6d008 1px,transparent 1px),
+    radial-gradient(ellipse at 50% 48%,#174c4038,transparent 58%),
+    linear-gradient(145deg,#0d1d24,#081218 72%);
+  background-size:28px 28px,28px 28px,auto,auto;
+  box-shadow:0 22px 70px #0006,inset 0 0 45px #36cbb00a;
+}
+.tech-architecture .connection-top{font-size:10.8px;letter-spacing:.14em;gap:12px;flex-wrap:wrap}
+.connection-status-dot,.core-live i{display:inline-block;width:7px;height:7px;border-radius:50%;background:#9be36b;box-shadow:0 0 12px #9be36b;vertical-align:middle;margin-right:7px;animation:pulse 1.7s infinite}
+.tech-network{position:relative;padding:28px 5px 14px;display:flex;flex-direction:column;align-items:center;overflow:hidden}
+.tech-zone-label{width:100%;font-size:9.6px;letter-spacing:.17em;color:#6e9299;margin:0 0 13px}
+.tech-sources{width:100%;display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:9px;position:relative;z-index:1}
+.tech-source{min-width:0;min-height:88px;padding:12px 7px 10px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:5px;border:1px solid #3caea755;border-radius:6px;background:linear-gradient(150deg,#112a31,#0b171e);box-shadow:inset 0 1px #ffffff08;transition:transform .25s,border-color .25s,box-shadow .25s}
+.tech-source:hover{transform:translateY(-3px);border-color:#5ed6d0;box-shadow:0 0 22px #5ed6d01b}
+.tech-icon{font-size:25.2px;line-height:1;color:#5ed6d0;text-shadow:0 0 13px #5ed6d055}
+.tech-source b{font-size:9.6px;letter-spacing:.08em;color:#d7e8e8;white-space:nowrap}
+.tech-source small{font-size:8.4px;color:#7f999f;line-height:1.3}
+.tech-bus{height:54px;width:min(78%,760px);position:relative;border-top:1px solid #36cbbb55;border-left:1px solid #36cbbb55;border-right:1px solid #36cbbb55;margin-top:18px}
+.tech-bus:before,.tech-bus:after{content:"";position:absolute;left:50%;width:1px;height:28px;background:linear-gradient(180deg,#5ed6d0,#9be36b);box-shadow:0 0 10px #5ed6d0}
+.tech-bus:before{top:-1px}
+.tech-bus:after{bottom:-28px}
+.tech-bus span{position:absolute;top:-3px;width:6px;height:6px;border-radius:50%;background:#9be36b;box-shadow:0 0 12px #9be36b;animation:techPacket 2.4s linear infinite}
+.tech-bus span:nth-child(1){left:8%;animation-delay:0s}.tech-bus span:nth-child(2){left:24%;animation-delay:.35s}.tech-bus span:nth-child(3){left:40%;animation-delay:.7s}.tech-bus span:nth-child(4){left:58%;animation-delay:1.05s}.tech-bus span:nth-child(5){left:75%;animation-delay:1.4s}.tech-bus span:nth-child(6){left:91%;animation-delay:1.75s}
+.tech-core-wrap{width:min(640px,88%);min-height:130px;display:flex;align-items:center;gap:20px;padding:20px 25px;position:relative;z-index:2;border:1px solid #80d96b99;border-radius:9px;background:linear-gradient(110deg,#17382f,#10242b 70%);box-shadow:0 0 40px #79d85d1b,inset 0 0 30px #5ed6d00a}
+.tech-core-side{width:64px;height:64px;flex:0 0 64px;display:grid;place-items:center;position:relative}
+.core-symbol{font-size:45.6px;color:#a4ed70;text-shadow:0 0 20px #9be36b;z-index:2;animation:spinSlow 18s linear infinite}
+.core-orbit{position:absolute;inset:4px;border:1px solid #5ed6d077;border-radius:50%;animation:spinSlow 8s linear infinite}
+.orbit-b{inset:-4px;border-color:#9be36b66;transform:rotateX(65deg);animation-duration:12s}
+.tech-core-copy{display:flex;flex-direction:column;gap:5px;min-width:0}
+.tech-core-copy small{font-size:8.4px;letter-spacing:.14em;color:#8fb3ae}
+.tech-core-copy b{font-size:21.6px;letter-spacing:.13em;color:#eff9f3}
+.tech-core-copy span{font-size:9.6px;line-height:1.6;color:#a8c0c1}
+.tech-core-copy i{font-style:normal;color:#9be36b;padding:0 4px}
+.core-live{margin-left:auto;align-self:flex-start;white-space:nowrap;font-size:8.4px;letter-spacing:.1em;color:#9be36b}
+.tech-output-line{height:43px;width:1px;background:linear-gradient(180deg,#9be36b,#5ed6d0);position:relative;box-shadow:0 0 10px #5ed6d055}
+.tech-output-line span{position:absolute;left:-2px;width:5px;height:5px;border-radius:50%;background:#b8ff8b;box-shadow:0 0 10px #9be36b;animation:techDrop 1.7s linear infinite}
+.tech-output-line span:nth-child(2){animation-delay:.4s}.tech-output-line span:nth-child(3){animation-delay:.8s}.tech-output-line span:nth-child(4){animation-delay:1.2s}
+.output-label{margin-bottom:12px}
+.tech-outputs{width:100%;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:9px}
+.tech-output{min-width:0;display:grid;grid-template-columns:36px 1fr;grid-template-rows:auto auto;align-items:center;column-gap:9px;padding:13px 12px;border:1px solid #3caea755;border-radius:6px;background:linear-gradient(145deg,#10232a,#0b171d)}
+.tech-output b{grid-row:1/3;width:34px;height:34px;display:grid;place-items:center;border-radius:7px;background:#163a34;color:#9be36b;font-size:19.2px}
+.tech-output span{font-size:10.8px;color:#e1eeee;font-weight:700}
+.tech-output small{font-size:8.4px;color:#819ba0}
+.tech-architecture .connection-foot{display:flex;justify-content:center;align-items:center;gap:12px;flex-wrap:wrap;padding-top:15px;border-top:1px solid #ffffff12;font-size:8.4px;letter-spacing:.13em;color:#829ba0}
+.tech-architecture .connection-foot i{font-style:normal;color:#9be36b}
+.personalized-features{width:100%;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+.personalized-features .custom-card{min-width:0}
+@keyframes techPacket{0%{transform:translateY(-2px);opacity:.2}35%{opacity:1}100%{transform:translateY(48px);opacity:0}}
+@keyframes techDrop{0%{top:0;opacity:0}20%{opacity:1}100%{top:40px;opacity:0}}
+@media(max-width:760px){
+ .tech-architecture{padding:13px}
+ .tech-network{padding:22px 0 12px}
+ .tech-sources{grid-template-columns:repeat(3,minmax(0,1fr));gap:7px}
+ .tech-source{min-height:78px}
+ .tech-core-wrap{width:96%;padding:15px 12px;gap:11px;flex-wrap:wrap}
+ .tech-core-side{width:48px;height:48px;flex-basis:48px}
+ .core-symbol{font-size:34.8px}
+ .tech-core-copy{flex:1}
+ .tech-core-copy b{font-size:18px}
+ .tech-core-copy span{font-size:8.4px}
+ .core-live{width:100%;margin:0 0 0 59px}
+ .tech-outputs{grid-template-columns:repeat(2,minmax(0,1fr));gap:7px}
+ .tech-output{padding:10px 8px;grid-template-columns:29px 1fr;column-gap:7px}
+ .tech-output b{width:28px;height:28px;font-size:15.6px}
+ .personalized-features{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media(max-width:390px){
+ .tech-source b{font-size:8.4px;letter-spacing:.03em}
+ .tech-source small{font-size:7.2px}
+ .tech-architecture .connection-top{font-size:8.4px}
+ .tech-core-copy span{line-height:1.5}
+ .tech-architecture .connection-foot{gap:6px;font-size:7.2px}
+}
+
+</style><style id="fuel-intelligence-responsive">
+/* Módulo de inteligência de combustível — substitui a visualização antiga de barras/linha. */
+.dash-bottom-grid>.fuel-intelligence-widget{grid-column:1/-1!important;min-width:0;min-height:0!important;padding:clamp(12px,1.5vw,20px);display:flex;flex-direction:column;gap:14px;overflow:hidden}
+.fuel-module-head{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.fuel-module-head small,.fuel-subhead small,.fuel-ai-title small{display:block;color:#86a9ad;font-size:10.8px;letter-spacing:.14em;font-weight:700}
+.fuel-module-head h4{font-size:clamp(16.8px,1.56vw,22.8px);line-height:1.25;margin:5px 0 4px;color:#e8f1f2}
+.fuel-module-head p,.fuel-subhead p{margin:0;color:#8ea5aa;font-size:13.2px;line-height:1.5;max-width:680px}
+.fuel-period{font-size:9.6px;letter-spacing:.08em;color:#9be36b;border:1px solid #315b4d;background:#102a26;padding:7px 9px;border-radius:6px;white-space:nowrap}
+.fuel-kpis{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}
+.fuel-kpi{min-width:0;padding:12px;border:1px solid #24434b;border-radius:9px;background:linear-gradient(145deg,#10252c,#0b1b21)}
+.fuel-kpi small{display:block;color:#87a1a7;font-size:9.6px;letter-spacing:.08em;line-height:1.35;min-height:22px}
+.fuel-kpi b{display:block;color:#eaf2f3;font-size:clamp(20.4px,2.4vw,30px);line-height:1.2;margin:5px 0 3px;white-space:nowrap}
+.fuel-kpi b em{font-style:normal;font-size:0.696em;color:#a7c0c2}.fuel-kpi span{display:block;color:#829ba1;font-size:10.8px;line-height:1.35}.fuel-positive{color:#9be36b!important}
+.fuel-heatmap-panel,.fuel-analysis-card{min-width:0;border:1px solid #24434b;border-radius:10px;background:#0c1d23;padding:13px}
+.fuel-subhead{display:flex;justify-content:space-between;align-items:flex-end;gap:12px;margin-bottom:12px}.fuel-subhead h5,.fuel-ai-title h5{margin:4px 0 3px;color:#e4eeee;font-size:15.6px;line-height:1.3}.fuel-subhead p{max-width:580px}
+.heat-legend{display:flex;align-items:center;gap:6px;color:#8da5aa;font-size:9.6px;white-space:nowrap}.heat-scale{width:72px;height:7px;border-radius:10px;background:linear-gradient(90deg,#142b31,#17675e,#20c5a8,#9be36b)}
+.heatmap-scroll{overflow-x:auto;overscroll-behavior-x:contain;padding-bottom:3px}.fuel-heatmap{display:grid;grid-template-columns:46px repeat(8,minmax(24px,1fr));gap:5px;min-width:390px;align-items:center}
+.heat-corner,.heat-hour,.heat-day{font-size:9.6px;color:#829da3;text-align:center;white-space:nowrap}.heat-corner{text-align:left;font-size:8.4px;letter-spacing:.05em}.heat-day{text-align:left;font-weight:700;letter-spacing:.04em}
+.heat-cell{height:clamp(19px,2.3vw,27px);border-radius:4px;border:1px solid #24434b;display:block;min-width:0}.h0{background:#10242b}.h1{background:#173b3d}.h2{background:#17665c}.h3{background:#1b927b}.h4{background:#39bd91}.h5{background:#9be36b;border-color:#9be36b}
+.heatmap-note{display:flex;justify-content:space-between;gap:10px;margin-top:10px;color:#80999f;font-size:9.6px;flex-wrap:wrap}.heatmap-note i{display:inline-block;width:7px;height:7px;border-radius:50%;background:#38c7a8;margin-right:5px}
+.fuel-analysis-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:10px}.fuel-subhead.compact{align-items:center;margin-bottom:10px}.fuel-subhead.compact .fuel-period{font-size:8.4px}
+.weekday-analysis{display:grid;gap:9px}.weekday-row{display:grid;grid-template-columns:29px minmax(30px,1fr) 58px;gap:8px;align-items:center;font-size:10.8px}.weekday-row>span{color:#93abb0;font-weight:700}.weekday-row>i{height:7px;background:#203a40;border-radius:10px;overflow:hidden}.weekday-row>i>b{display:block;height:100%;border-radius:10px;background:linear-gradient(90deg,#19bfae,#9be36b)}.weekday-row strong{text-align:right;color:#dce9e9;font-size:10.8px;white-space:nowrap}
+.fuel-hour-chart{display:block;width:100%;height:125px;overflow:visible}.fuel-hour-gridline{fill:none;stroke:#29434b;stroke-width:1;stroke-dasharray:3 5}.fuel-hour-area{fill:url(#fuelHourFill)}.fuel-hour-curve{fill:none;stroke:#9be36b;stroke-width:3;stroke-linecap:round;filter:drop-shadow(0 0 3px #9be36666)}.fuel-hour-axis{fill:#819ba1;font-size:10.8px}.hourly-findings{display:flex;gap:14px;flex-wrap:wrap;color:#8ea5aa;font-size:9.6px}.hourly-findings b{color:#9be36b;margin-right:4px}.fuel-card-foot{display:block;color:#78949a;font-size:9.6px;line-height:1.4;margin-top:9px}
+.fuel-ai-analysis{border:1px solid #28534f;border-radius:10px;background:linear-gradient(115deg,#10252b,#0b1a20 60%,#102b2b);padding:13px}.fuel-ai-title{display:flex;align-items:center;gap:9px;margin-bottom:11px}.fuel-ai-title h5{margin-bottom:0}.fuel-ai-spark{color:#9be36b;font-size:24px}.fuel-ai-title .insight-live{margin-left:auto}.fuel-ai-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}.fuel-ai-grid article{min-width:0;border:1px solid #28454b;border-radius:8px;padding:10px;background:#0c1d23}.fuel-ai-grid article small{display:block;color:#9be36b;font-size:8.4px;letter-spacing:.1em;margin-bottom:6px}.fuel-ai-grid article b{display:block;color:#e2eeee;font-size:12px;line-height:1.4}.fuel-ai-grid article p{color:#8da5aa;font-size:10.8px;line-height:1.5;margin:6px 0 0}.fuel-ai-foot{color:#78949a;font-size:9.6px;line-height:1.45;margin-top:10px;padding-top:9px;border-top:1px solid #263f45}
+@media(max-width:760px){.fuel-kpis{grid-template-columns:repeat(2,minmax(0,1fr))}.fuel-analysis-grid{grid-template-columns:1fr}.fuel-ai-grid{grid-template-columns:1fr 1fr}.fuel-module-head{align-items:flex-start}.fuel-heatmap-panel,.fuel-analysis-card,.fuel-ai-analysis{padding:11px}}
+@media(max-width:480px){.dash-bottom-grid>.fuel-intelligence-widget{padding:11px!important;gap:10px}.fuel-kpis{gap:6px}.fuel-kpi{padding:9px}.fuel-kpi small{font-size:8.4px;min-height:20px}.fuel-kpi b{font-size:21.6px}.fuel-kpi span{font-size:9.6px}.fuel-module-head h4{font-size:16.8px}.fuel-module-head p{font-size:10.8px}.fuel-period{font-size:8.4px}.fuel-ai-grid{grid-template-columns:1fr}.fuel-ai-title{flex-wrap:wrap}.fuel-ai-title .insight-live{margin-left:0}.fuel-subhead{align-items:flex-start;flex-direction:column}.heat-legend{align-self:flex-end}.fuel-hour-chart{height:112px}}
+@media(max-width:360px){.fuel-kpi b{font-size:19.2px}.fuel-heatmap{min-width:370px}.weekday-row{grid-template-columns:26px minmax(25px,1fr) 54px;gap:6px}}
+@media(orientation:landscape) and (max-width:1100px){.fuel-kpis{grid-template-columns:repeat(4,minmax(0,1fr))}.fuel-analysis-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.fuel-ai-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.fuel-kpi b{font-size:clamp(18px,2.4vw,25.2px)}}
+</style><style id="principia-final-refinements">
+/* Ritmo uniforme entre capítulos: mesmas margens verticais em toda a landing page. */
+main>section:not(.hero){padding-block:clamp(54px,6vw,78px)!important;margin-block:0!important}
+main>section.cta{padding-block:clamp(54px,6vw,78px)!important}
+.personalized-section{gap:clamp(22px,3vw,34px)!important}
+/* Gráficos dos quatro relatórios: evolução em linha, sem blocos retangulares. */
+.chart{min-width:0;height:clamp(150px,22vw,220px);overflow:hidden}
+.chart svg{display:block;width:100%;height:100%;overflow:visible}
+.chart-grid{stroke:#ffffff14;stroke-width:1;stroke-dasharray:4 7}
+.chart-line{fill:none;stroke:#9be36b;stroke-width:4;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:1200;stroke-dashoffset:1200;animation:reportLineDraw 2s ease forwards;filter:drop-shadow(0 0 5px #9be36b55)}
+.chart-line.secondary-line{stroke:#35c9b5;stroke-width:2.5;opacity:.8;animation-delay:.15s}
+.chart-area{fill:url(#chartFill);opacity:.8}
+.chart-point{fill:#b8f58c;stroke:#12342d;stroke-width:3;filter:drop-shadow(0 0 4px #9be36b77)}
+@keyframes reportLineDraw{to{stroke-dashoffset:0}}
+/* Mapa de calor integral: 06h–18h, sem rolagem horizontal. */
+.heatmap-scroll{overflow:visible!important;width:100%;min-width:0}
+.fuel-heatmap{width:100%;min-width:0;grid-template-columns:minmax(48px,.72fr) repeat(5,minmax(0,1fr));gap:clamp(4px,.8vw,8px)}
+.heat-hour{font-size:clamp(9.6px,1.08vw,12px)}
+.heat-day{font-size:clamp(9.6px,1.08vw,12px)}
+.heat-cell{height:clamp(22px,3vw,34px);border-radius:5px;transition:filter .2s,transform .2s}
+.heat-cell:hover{filter:brightness(1.2);transform:scale(1.025)}
+.heatmap-note{font-size:10.8px}
+/* Assistente virtual: cabeçalho com presença visual própria e status pulsante. */
+.chat-window{border:1px solid #35c9b577;border-radius:12px;overflow:hidden;background:linear-gradient(155deg,#0b1d23,#09141b 72%);box-shadow:0 22px 65px #0008,0 0 32px #35c9b510}
+.chat-metrics{background:#0d2026}
+.chat-head{min-height:82px;padding:17px 20px;background:linear-gradient(105deg,#123c35 0%,#12302f 48%,#10232c 100%);border-bottom:1px solid #53d6bb55;box-shadow:inset 0 1px #9be36b22}
+.agent{font-size:15.6px;letter-spacing:.01em;gap:13px}
+.agent-icon{width:43px;height:43px;flex:0 0 43px;border-radius:13px;background:linear-gradient(145deg,#5ed6d0,#9be36b);box-shadow:0 0 24px #5ed6d044;color:#071510;font-size:26.4px}
+.agent small{font-size:10.8px;margin-top:3px;color:#b0c8c6}
+.chat-head .status{display:inline-flex;align-items:center;gap:9px;padding:8px 12px;border:1px solid #9be36b55;border-radius:30px;background:#102d25;color:#a7ef75;font-size:12px;font-weight:800;letter-spacing:.1em;white-space:nowrap}
+.chat-head .status:before{content:"";width:8px;height:8px;border-radius:50%;background:#9be36b;box-shadow:0 0 0 0 #9be36b77;animation:onlinePulse 1.7s infinite}
+.chat-head .status{font-size:0}
+.chat-head .status:after{content:"CONECTADO";font-size:12px}
+@keyframes onlinePulse{0%{box-shadow:0 0 0 0 #9be36b88;opacity:1}70%{box-shadow:0 0 0 8px #9be36000;opacity:.82}100%{box-shadow:0 0 0 0 #9be36000;opacity:1}}
+.msg.bot{border-left:3px solid #5ed6d0;background:linear-gradient(120deg,#153036,#11232b);border-color:#2a5558;border-left-color:#5ed6d0;border-radius:4px 12px 12px 12px;font-size:13.2px}
+.chatbody{background:radial-gradient(ellipse at 15% 0%,#1b514322,transparent 55%),#09171d;min-height:250px}
+.prompts{background:#0b191f}
+.chatform{background:#0b191f}
+/* Escalas e quebras consistentes em todas as orientações. */
+.dash,.demo,.reports-console,.panel,.kpi,.chat-window,.personalized-section{min-width:0;max-width:100%}
+@media(max-width:760px){
+ main>section:not(.hero){padding-block:46px!important}
+ .fuel-heatmap{grid-template-columns:42px repeat(5,minmax(0,1fr));gap:4px}
+ .heat-hour,.heat-day{font-size:9.6px}
+ .heat-cell{height:24px}
+ .chat-head{padding:13px;gap:10px}
+ .agent{font-size:13.2px}
+ .agent-icon{width:38px;height:38px;flex-basis:38px}
+ .chat-head .status{padding:7px 9px}
+}
+@media(max-width:420px){
+ .fuel-heatmap{grid-template-columns:35px repeat(5,minmax(0,1fr));gap:3px}
+ .heat-hour,.heat-day{font-size:8.4px}
+ .heat-cell{height:21px;border-radius:3px}
+ .fuel-subhead{gap:8px}
+ .heat-legend{font-size:8.4px}
+ .heat-scale{width:52px}
+ .chat-head .status{padding:6px 7px}
+ .chat-head .status:after{font-size:9.6px}
+ .agent{gap:8px}
+ .agent-icon{width:34px;height:34px;flex-basis:34px}
+}
+@media(orientation:landscape) and (max-width:1100px){
+ main>section:not(.hero){padding-block:40px!important}
+ .fuel-heatmap{grid-template-columns:52px repeat(5,minmax(0,1fr))}
+ .heat-cell{height:clamp(20px,3vh,28px)}
+}
+@media(prefers-reduced-motion:reduce){.chart-line,.chat-head .status:before,.heat-cell{animation:none!important;transition:none!important}}
+</style>
+
+<style id="principia-clean-system-v32">
+:root{
+ --pl-font:"Inter","Segoe UI",system-ui,sans-serif;
+ --pl-text:#e5eef0;--pl-muted:#91a8ad;--pl-green:#91df62;
+ --pl-line:#29434b;--pl-card:#0d1c22;
+ --pl-section:clamp(56px,6vw,78px);
+ --pl-h1:clamp(2.65rem,5.2vw,4.25rem);
+ --pl-h2:clamp(2rem,3.2vw,2.65rem);
+ --pl-h3:clamp(1.25rem,2vw,1.5rem);
+ --pl-body:1rem;--pl-small:.875rem;--pl-label:.75rem;
+}
+*,*::before,*::after{box-sizing:border-box}
+html,body{max-width:100%;overflow-x:hidden}
+body,body *{font-family:var(--pl-font);font-synthesis:none;text-rendering:optimizeLegibility}
+body{font-size:var(--pl-body);line-height:1.6}
+img,svg,video,canvas{max-width:100%}
+.wrap{width:min(1180px,calc(100% - 48px));margin-inline:auto}
+main>section:not(.hero){padding-block:var(--pl-section)!important;margin-block:0!important}
+main>section>.head,main>section>.section-head{margin-bottom:24px!important}
+
+/* Global type scale: one family, predictable role-based sizes and weights */
+h1,.hero h1{font-size:var(--pl-h1)!important;line-height:1.08!important;font-weight:600!important;letter-spacing:-.045em!important}
+h2,.head h2,.copy h2,.cta-panel h2{font-size:var(--pl-h2)!important;line-height:1.16!important;font-weight:550!important;letter-spacing:-.04em!important}
+h3,.dash-main-head h3,.dashhead h3{font-size:var(--pl-h3)!important;line-height:1.3!important;font-weight:550!important;letter-spacing:-.025em!important}
+h4,.dash-widget h4,.widget-head h4,.fuel-module-head h4,.reports-console h4{font-size:1.15rem!important;line-height:1.32!important;font-weight:550!important;letter-spacing:-.025em!important}
+p,.hero p,.head p,.copy p,.cta-panel p{font-size:var(--pl-body);line-height:1.65}
+.eyebrow,.kicker,.dash-main-head small,.widget-head small,.fuel-module-head small,
+.dash-kpi small,.fuel-kpi small,.metric-label,.kpi-label,.chart-axis,.chart-legend,
+.chart-label,.cost-row,.driver-list small,.insight-meta,.insight-foot,.table-caption,.footnote{
+ font-size:var(--pl-label);font-weight:450;letter-spacing:.025em;line-height:1.45
+}
+.dash-kpi b,.fuel-kpi b,.annual-summary strong,.report-value{font-size:1.55rem!important;font-weight:550!important;letter-spacing:-.035em;font-variant-numeric:tabular-nums}
+
+/* Header and mark */
+header{height:auto;min-height:78px;display:flex;align-items:center;justify-content:space-between;gap:18px}
+.brand{display:flex;align-items:center;gap:13px;min-width:0;line-height:1.3}
+.mark{width:42px;height:42px;min-width:42px;display:grid;place-items:center;line-height:1;font-size:23px;padding:0}
+.brand>span:last-child{display:block;line-height:1.35}
+.brand small{display:inline-block;line-height:1.4}
+.topcta{white-space:nowrap}
+
+/* Hero: controlled width and line length instead of oversized forced breaks */
+.hero{min-width:0}
+.hero h1{max-width:13ch;margin:24px 0 26px}
+.hero p{max-width:62ch}
+.hero .eyebrow{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.hero .eyebrow:before{content:"";width:32px;height:2px;background:var(--pl-green);flex:0 0 32px}
+
+/* Dashboard native shell and cards */
+.hero-dashboard-screen.dashboard-native{display:block!important;grid-template-columns:minmax(0,1fr)!important;width:100%!important;max-width:100%!important;min-width:0!important}
+.dash-sidebar{display:none!important}
+.dash-main{display:flex!important;flex-direction:column!important;width:100%!important;max-width:100%!important;min-width:0!important;grid-column:1/-1!important;overflow:hidden!important}
+.dash,.dash *,.reports-console,.reports-console *,.fuel-intelligence-widget,.fuel-intelligence-widget *{min-width:0}
+.dash-main-head{display:flex;align-items:flex-start;justify-content:space-between;gap:14px;flex-wrap:wrap}
+.dash-main-head>div:first-child{min-width:0;flex:1}
+.dash-main-head h3{margin:5px 0}
+.dash-main-head span{font-size:.85rem;line-height:1.45}
+.dash-period{flex:0 0 auto;max-width:100%}
+.dash-kpis{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.dash-kpi{display:flex;align-items:center;gap:12px;min-width:0;min-height:104px;padding:14px;border-radius:15px}
+.dash-kpi>div:nth-child(2){min-width:0;flex:1}
+.dash-kpi b{display:flex;align-items:baseline;flex-wrap:wrap;gap:5px 10px;line-height:1.25;margin-top:4px}
+.dash-kpi b small{font-size:.72rem!important;font-weight:450!important}
+.dash-kpi em{display:block;margin-top:5px;font-size:.8rem;line-height:1.4}
+.kpi-icon{width:40px;height:40px;min-width:40px;flex:0 0 40px;display:grid;place-items:center;border-radius:12px;font-size:21px!important;line-height:1!important}
+.kpi-icon::before{content:none!important}
+.alert-kpi{position:relative}
+.alert-kpi b{justify-content:flex-start;column-gap:12px}
+.alert-kpi .alert-open,.alert-kpi .alert-critical{display:inline-flex;align-items:baseline;gap:4px;white-space:nowrap}
+.alert-kpi .alert-critical{color:#ff8b7c}
+.alert-pulse-native{position:absolute;right:12px;top:10px}
+.dash-widget,.reports-console .panel,.reports-console .kpi,.fuel-intelligence-widget{min-width:0;max-width:100%;padding:16px;border-radius:16px;overflow:hidden}
+.widget-head,.fuel-module-head{display:flex;align-items:flex-start;justify-content:space-between;gap:14px}
+.widget-head>div,.fuel-module-head>div{min-width:0;flex:1}
+.widget-head h4,.fuel-module-head h4{margin:5px 0 6px}
+.widget-head p,.fuel-module-head p{margin:0;max-width:66ch;font-size:.9rem;line-height:1.55}
+.annual-summary{display:flex;align-items:flex-end;justify-content:space-between;gap:14px;flex-wrap:wrap}
+.annual-summary>div{min-width:0}
+.annual-summary strong{display:block;font-size:2.6rem!important;color:var(--pl-green)}
+.annual-summary-note{font-size:.95rem}
+.annual-indicators{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.annual-indicators>*{min-width:0}
+.dash-bottom-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.dash-bottom-grid>.fuel-intelligence-widget{grid-column:1/-1}
+.fuel-module-head{align-items:flex-start}
+.fuel-period{flex:0 0 auto;max-width:100%;white-space:normal;text-align:center;font-size:.72rem;padding:8px 10px}
+.fuel-kpis{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.fuel-kpi{min-width:0;padding:14px;border-radius:14px}
+.fuel-kpi b{display:block;overflow-wrap:anywhere}
+.fuel-kpi span{display:block;font-size:.85rem;line-height:1.45;margin-top:4px}
+.chart{min-width:0;overflow:hidden}
+.chart svg{display:block;width:100%;height:100%}
+
+/* Restore the dedicated violet/blue assistant identity */
+/* Assistente virtual — identidade violeta/azul própria, preservando o verde do status online. */
+.chat-window{
+  --ai-violet:#9b8cff;
+  --ai-blue:#55b9ff;
+  border:1px solid #8275e8!important;
+  background:linear-gradient(145deg,#17172f 0%,#10182b 48%,#0b1725 100%)!important;
+  box-shadow:0 24px 70px #0009,0 0 0 1px #8d7bff20!important;
+}
+.chat-metrics{background:#12182b!important;border-bottom:1px solid #8174e633!important}
+.chat-metrics>div{
+  background:linear-gradient(135deg,#202044,#14243a)!important;
+  border-color:#5c64ad!important;
+}
+.chat-metrics small{color:#a9b4df!important}
+.chat-metrics b{color:#e7e9ff!important}
+.chat-head{
+  background:linear-gradient(105deg,#30245d 0%,#24265a 48%,#15385b 100%)!important;
+  border-bottom:1px solid #8e83ff88!important;
+  box-shadow:inset 0 1px #ffffff20!important;
+}
+.agent-icon{
+  background:linear-gradient(145deg,#b39cff,#5cbcff)!important;
+  color:#10142b!important;
+  box-shadow:0 0 0 4px #9d8bff20!important;
+}
+.agent small{color:#c3c8ed!important}
+.chatbody{
+  background:radial-gradient(ellipse at 12% 0%,#6d5be52b,transparent 56%),linear-gradient(150deg,#111a31,#0d1a29)!important;
+}
+.msg.bot{
+  background:linear-gradient(120deg,#24244a,#172c43)!important;
+  border:1px solid #5f65b4!important;
+  border-left:3px solid #a18dff!important;
+  color:#e2e8ff!important;
+}
+.msg.user{
+  background:linear-gradient(120deg,#173a59,#16415a)!important;
+  border:1px solid #4e9bd6!important;color:#e5f5ff!important;
+}
+.msg strong{color:#b7a8ff!important}
+.prompts{background:#10182a!important}
+.prompt{
+  color:#d1d5ff!important;background:#1b2140!important;
+  border:1px solid #6c68c5!important;border-radius:7px!important;
+}
+.prompt:hover{background:#302b63!important;border-color:#a294ff!important;box-shadow:0 0 0 2px #8d7bff20!important}
+.chatform{background:#10182a!important;border-top:1px solid #6e69bd55!important}
+.chatform input{
+  background:#17243b!important;border:1px solid #5666a6!important;color:#f1f3ff!important;
+}
+.chatform input:focus{border-color:#9b8cff!important;box-shadow:0 0 0 3px #9b8cff20!important}
+.send{
+  background:linear-gradient(145deg,#b09aff,#61bdff)!important;
+  color:#10142b!important;border-radius:7px!important;
+}
+.chatnote{background:#10182a!important;color:#a2accd!important}
+.chat-head .status{background:#123329!important;border-color:#9be36b77!important;color:#a7ef75!important}
+.chat-head .status:before{background:#9be36b!important}
+
+
+.chat-layout{grid-template-columns:1fr!important}
+.chat-window{width:100%;min-width:0;max-width:100%}
+.chat-head{gap:12px;flex-wrap:wrap}
+.chat-metrics{display:grid;grid-template-columns:repeat(3,minmax(0,1fr))}
+.chat-metrics>div{min-width:0}
+.chat-metrics small{font-size:.68rem!important}
+.chat-metrics b{font-size:.88rem!important}
+
+/* Compact, direct final CTA */
+.cta-panel{display:flex;align-items:flex-start;justify-content:space-between;gap:24px;padding:clamp(22px,3.5vw,38px)}
+.cta-panel>div{min-width:0;flex:1}
+.cta-panel h2{max-width:24ch}
+.cta-panel p{max-width:62ch;font-size:.95rem}
+.cta-panel .btn{white-space:nowrap}
+
+/* Automatic reveal, never waits for a tap */
+.reveal{opacity:0;transform:translateY(10px);transition:opacity .6s ease,transform .6s cubic-bezier(.2,.7,.2,1)}
+.reveal.show{opacity:1;transform:translateY(0)}
+svg text{font-family:var(--pl-font);font-weight:400;letter-spacing:0}
+
+@media(max-width:760px){
+ :root{--pl-h1:clamp(2.55rem,9.2vw,3.45rem);--pl-h2:clamp(1.9rem,6.8vw,2.35rem);--pl-h3:1.25rem;--pl-body:.96rem;--pl-section:52px}
+ .wrap{width:calc(100% - 40px)}
+ header{min-height:70px;gap:10px}
+ .brand{gap:10px;font-size:12px}
+ .mark{width:40px;height:40px;min-width:40px}
+ .nav{display:none}
+ .topcta{font-size:10px;padding:9px 10px}
+ .hero{padding:42px 0 50px}
+ .hero h1{max-width:12.5ch;margin:20px 0 22px;line-height:1.08!important}
+ .hero p{font-size:.96rem;line-height:1.65}
+ .dash-kpis{gap:10px}
+ .dash-kpi{min-height:104px;padding:11px;gap:9px}
+ .dash-kpi b,.fuel-kpi b{font-size:1.35rem!important}
+ .kpi-icon{width:36px;height:36px;min-width:36px;flex-basis:36px;font-size:19px!important}
+ .dash-widget,.reports-console .panel,.reports-console .kpi,.fuel-intelligence-widget{padding:14px}
+ .dash-bottom-grid{grid-template-columns:minmax(0,1fr);gap:12px}
+ .dash-bottom-grid>.fuel-intelligence-widget{grid-column:auto}
+ .fuel-module-head{display:flex;flex-direction:column;gap:12px}
+ .fuel-module-head>div{width:100%}
+ .fuel-module-head h4{font-size:1.15rem!important;max-width:none}
+ .fuel-module-head p{font-size:.88rem;max-width:unset}
+ .fuel-period{align-self:flex-start}
+ .fuel-kpis{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
+ .fuel-kpi{padding:12px}
+ .annual-summary{align-items:flex-start}
+ .annual-summary strong{font-size:2.3rem!important}
+ .annual-summary-note{font-size:.85rem}
+ .chat-layout .copy h2{font-size:1.9rem!important}
+ .chat-layout .copy .ai-subheadline{font-size:.92rem!important}
+ .chat-window{border-radius:13px}
+ .chat-head{padding:13px}
+ .chatbody{padding:13px;min-height:230px}
+ .msg{font-size:.9rem;line-height:1.65;max-width:96%}
+ .prompts{gap:8px}
+ .prompt{font-size:.78rem;padding:8px 10px}
+ .chatform input{font-size:.9rem}
+ .cta-panel{flex-direction:column;gap:18px;padding:22px}
+ .cta-panel h2{font-size:1.8rem!important}
+ .cta-panel p{font-size:.92rem}
+}
+@media(max-width:390px){
+ .wrap{width:calc(100% - 32px)}
+ .brand{font-size:10.5px;gap:8px}
+ .brand small{font-size:8px!important;letter-spacing:.13em!important}
+ .mark{width:36px;height:36px;min-width:36px;font-size:20px}
+ .topcta{font-size:9px;padding:8px}
+ .hero h1{font-size:clamp(2.35rem,9.4vw,2.85rem)!important;max-width:12ch}
+ .dash-kpi{min-height:100px;padding:9px;gap:7px}
+ .dash-kpi b{font-size:1.18rem!important}
+ .dash-kpi small{font-size:.66rem}
+ .dash-kpi em{font-size:.7rem}
+ .kpi-icon{width:32px;height:32px;min-width:32px;flex-basis:32px;font-size:17px!important}
+ .fuel-kpi{padding:10px}
+ .fuel-kpi small{font-size:.68rem}
+ .fuel-kpi b{font-size:1.18rem!important}
+ .fuel-kpi span{font-size:.75rem}
+ .chat-metrics>div{padding:6px}
+ .chat-metrics small{font-size:.6rem!important}
+ .chat-metrics b{font-size:.75rem!important}
+}
+@media(prefers-reduced-motion:reduce){
+ .reveal{opacity:1;transform:none;transition:none}
+ .ai-cue-arrow,.prompt-pulse,.prompt-featured,.chat-head .status:before{animation:none!important}
+}
+</style>
+
+
+<style id="principia-chat-invitation-v33">
+/* Chamada de interação: separada dos botões e visualmente ligada às perguntas */
+.prompt-invitation{
+  display:flex!important;align-items:center;gap:12px;
+  margin:22px 16px 12px!important;padding:13px 15px!important;
+  border:1px solid #8f82ff88!important;border-radius:10px!important;
+  background:linear-gradient(100deg,#282452 0%,#1a2442 100%)!important;
+  color:#e8e5ff!important;font-size:12px!important;font-weight:700!important;
+  letter-spacing:.045em!important;line-height:1.45!important;
+  box-shadow:0 0 22px #8e80ff16,inset 0 1px #ffffff12!important;
+}
+.prompt-invitation:after{
+  content:"↓";display:grid;place-items:center;flex:0 0 27px;height:27px;
+  margin-left:auto;border-radius:50%;background:#a18dff;color:#17152f;
+  font-size:18px;font-weight:800;line-height:1;
+  animation:promptArrowDown 1.25s ease-in-out infinite;
+}
+.prompt-pulse{
+  display:block!important;flex:0 0 9px;width:9px;height:9px;
+  border-radius:50%;background:#b4a4ff!important;
+  box-shadow:0 0 0 5px #a18dff20,0 0 14px #a18dff99!important;
+  animation:promptDotPulse 1.6s ease-out infinite;
+}
+.prompts{
+  display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;
+  gap:9px!important;padding:0 16px 17px!important;
+  align-items:stretch!important;
+}
+.prompt{
+  display:flex!important;align-items:center;justify-content:center;
+  min-height:46px;padding:10px 12px!important;text-align:center;
+  white-space:normal!important;line-height:1.35!important;
+  font-size:12px!important;font-weight:500!important;
+  border-radius:9px!important;transition:background .2s,border-color .2s,box-shadow .2s,transform .2s!important;
+}
+.prompt-featured{
+  grid-column:1/-1!important;position:relative;
+  border-color:#a18dff!important;
+  background:linear-gradient(100deg,#39316f,#27365d)!important;
+  color:#fff!important;font-weight:650!important;
+  box-shadow:0 0 0 2px #a18dff24,0 0 20px #8f82ff20!important;
+  animation:featuredPromptGlow 2.4s ease-in-out infinite;
+}
+.prompt-featured:after{content:"↗";margin-left:8px;color:#c6baff;font-size:14px}
+.prompt:active{transform:scale(.985)}
+@keyframes promptArrowDown{0%,100%{transform:translateY(-2px)}50%{transform:translateY(3px)}}
+@keyframes promptDotPulse{0%{box-shadow:0 0 0 0 #a18dff55,0 0 12px #a18dff88}70%{box-shadow:0 0 0 8px #a18dff00,0 0 12px #a18dff55}100%{box-shadow:0 0 0 0 #a18dff00,0 0 12px #a18dff55}}
+@keyframes featuredPromptGlow{0%,100%{box-shadow:0 0 0 2px #a18dff20,0 0 14px #8f82ff12}50%{box-shadow:0 0 0 3px #a18dff35,0 0 23px #8f82ff35}}
+@media(max-width:520px){
+ .prompt-invitation{margin:19px 12px 12px!important;padding:12px!important;font-size:11px!important}
+ .prompts{padding:0 12px 15px!important;gap:8px!important}
+ .prompt{min-height:48px;padding:9px 8px!important;font-size:11px!important}
+}
+@media(prefers-reduced-motion:reduce){
+ .prompt-pulse,.prompt-invitation:after,.prompt-featured{animation:none!important}
+}
+</style>
+
+
+<style id="principia-distance-kpi-v34">
+/* Mantém número e unidade juntos e alinha o conjunto no mesmo eixo dos demais KPIs */
+.dash-kpi:nth-child(2)>div:nth-child(2){min-width:0;flex:1}
+.dash-kpi:nth-child(2)>div:nth-child(2)>b{
+  display:flex!important;align-items:baseline!important;flex-wrap:nowrap!important;
+  white-space:nowrap!important;gap:4px!important;line-height:1.15!important;
+  font-size:clamp(1.12rem,2vw,1.35rem)!important;
+  letter-spacing:-.035em!important;
+}
+#dash-distance{display:inline-block!important;white-space:nowrap!important;font-size:1em!important}
+.dash-kpi:nth-child(2)>div:nth-child(2)>b::first-line{white-space:nowrap}
+@media(max-width:760px){
+ .dash-kpi:nth-child(2)>div:nth-child(2)>b{font-size:clamp(1.08rem,4.1vw,1.22rem)!important}
+}
+@media(max-width:390px){
+ .dash-kpi:nth-child(2)>div:nth-child(2)>b{font-size:1.02rem!important;letter-spacing:-.04em!important}
+}
+</style>
+
+
+<style id="principia-chat-hierarchy-v35">
+/* Hierarquia clara: apresentação breve, instrução independente e primeira ação em destaque */
+.chatbody .msg.bot{
+  max-width:92%!important;
+  padding:13px 16px!important;
+  font-size:clamp(13px,3.5vw,15px)!important;
+  line-height:1.55!important;
+  letter-spacing:0!important;
+}
+.chatbody .msg.bot strong{font-weight:600!important}
+.prompt-invitation{
+  margin:20px 16px 13px!important;
+  background:linear-gradient(100deg,#123a35,#102a2c)!important;
+  border:1px solid #4b9d7d!important;
+  border-left:4px solid #9be36b!important;
+  color:#d9f5e5!important;
+  box-shadow:0 5px 18px #0003!important;
+}
+.prompt-invitation:after{
+  background:#9be36b!important;color:#10231b!important;
+  animation:promptArrowDown 1.25s ease-in-out infinite;
+}
+.prompt-pulse{
+  background:#9be36b!important;
+  box-shadow:0 0 0 5px #9be36b20,0 0 14px #9be36b99!important;
+}
+.prompts{gap:10px!important}
+.prompt{
+  background:#1b2440!important;
+  border:1px solid #6960b5!important;
+  color:#d9dcf6!important;
+  min-height:50px!important;
+}
+.prompt-featured{
+  grid-column:1/-1!important;
+  min-height:66px!important;
+  flex-direction:column!important;
+  gap:5px!important;
+  background:linear-gradient(105deg,#5142a4 0%,#343d78 100%)!important;
+  border:1px solid #b2a2ff!important;
+  color:#fff!important;
+  font-size:14px!important;
+  font-weight:700!important;
+  box-shadow:0 0 0 3px #a18dff25,0 8px 22px #7968e044!important;
+  position:relative!important;
+}
+.prompt-featured:before{
+  content:"COMECE POR AQUI";
+  display:block;
+  color:#d7ceff;
+  font-size:9px;
+  font-weight:800;
+  letter-spacing:.13em;
+}
+.prompt-featured:after{
+  content:"↗";
+  position:absolute;
+  right:15px;top:50%;
+  transform:translateY(-50%);
+  display:grid;place-items:center;
+  width:27px;height:27px;border-radius:50%;
+  background:#c1b5ff;color:#28204f;
+  font-size:16px;font-weight:800;
+}
+.prompt-featured{padding-right:48px!important}
+.prompt:not(.prompt-featured):hover{
+  border-color:#a18dff!important;background:#252e50!important
+}
+@media(max-width:520px){
+ .chatbody .msg.bot{max-width:96%!important;padding:12px 14px!important;font-size:13px!important}
+ .prompt-invitation{margin:18px 12px 12px!important}
+ .prompt-featured{min-height:64px!important;font-size:13px!important}
+}
+</style>
+
+
+<style id="principia-insights-metrics-v36">
+/* Título mais direto para a área de análises */
+.insight-panel h3,.insights-widget h3{max-width:100%;text-wrap:balance}
+/* Indicadores resumidos: valor e explicação lado a lado no mobile */
+.metrics{
+  grid-template-columns:repeat(2,minmax(0,1fr))!important;
+  column-gap:0!important;
+  row-gap:16px!important;
+}
+.metric{
+  display:flex!important;
+  align-items:baseline!important;
+  justify-content:flex-start!important;
+  flex-wrap:wrap!important;
+  column-gap:10px!important;
+  row-gap:3px!important;
+  min-width:0!important;
+  padding:7px 12px!important;
+}
+.metric b{
+  display:inline!important;
+  flex:0 0 auto!important;
+  font-size:clamp(20px,5.2vw,25px)!important;
+  line-height:1.15!important;
+  white-space:nowrap!important;
+}
+.metric span{
+  display:inline!important;
+  flex:1 1 95px!important;
+  min-width:0!important;
+  font-size:9px!important;
+  line-height:1.35!important;
+  letter-spacing:.08em!important;
+  overflow-wrap:normal!important;
+}
+.metric:nth-child(odd){padding-left:0!important}
+.metric:nth-child(even){border-right:0!important}
+@media(max-width:390px){
+ .metric{column-gap:7px!important;padding-right:7px!important}
+ .metric b{font-size:19px!important}
+ .metric span{font-size:8px!important;flex-basis:80px!important}
+}
+</style>
+
+
+<style id="principia-secondary-type-system-v37">
+/* Hierarquia única para textos secundários em todos os dashboards e relatórios */
+:where(.hero-dashboard,.reports-console,.dash,.dash-widget,.fuel-intelligence-widget,.fuel-heatmap-panel,.profitability-widget,.route-widget,.cost-widget,.driver-widget,.insights-widget) :where(.widget-head>span,.dash-main-head>span,.dashhead>span,.fuel-module-head>span,.fuel-subhead,.kpi-label,.dash-kpi-label,.fuel-kpi-label,.cost-row span,.driver-list small,.insight-meta,.insight-stage,.insight-foot,.heatmap-note,.heat-legend,.heat-hour,.heat-day,.chart-labels,.annual-legend,.annual-summary-note){
+  font-size:10px!important;
+  line-height:1.45!important;
+  font-weight:500!important;
+  letter-spacing:.045em!important;
+}
+:where(.hero-dashboard,.reports-console,.dash,.dash-widget,.fuel-intelligence-widget,.fuel-heatmap-panel,.profitability-widget,.route-widget,.cost-widget,.driver-widget,.insights-widget) :where(p,.widget-description,.dash-description,.fuel-description,.heatmap-description,.insight-description,.annual-summary-note){
+  font-size:13px!important;
+  line-height:1.6!important;
+  font-weight:400!important;
+  letter-spacing:0!important;
+}
+:where(.hero-dashboard,.reports-console,.dash,.dash-widget,.fuel-intelligence-widget,.fuel-heatmap-panel,.profitability-widget,.route-widget,.cost-widget,.driver-widget,.insights-widget) :where(.muted,.secondary,.supporting,.kpi-note,.fuel-kpi-note,.route-vehicle-info small,.driver-list span,.insight-foot span){
+  font-size:11px!important;
+  line-height:1.45!important;
+  font-weight:400!important;
+}
+:where(.hero-dashboard,.reports-console,.dash,.dash-widget,.fuel-intelligence-widget,.fuel-heatmap-panel,.profitability-widget,.route-widget,.cost-widget,.driver-widget,.insights-widget) :where(.widget-head h3,.widget-head h4,.fuel-subhead h3,.fuel-subhead h4){
+  font-size:18px!important;
+  line-height:1.3!important;
+  font-weight:550!important;
+  letter-spacing:-.025em!important;
+}
+:where(.hero-dashboard,.reports-console,.dash,.dash-widget,.fuel-intelligence-widget,.fuel-heatmap-panel,.profitability-widget,.route-widget,.cost-widget,.driver-widget,.insights-widget) :where(.kpi-value,.dash-kpi strong,.fuel-kpi strong){
+  line-height:1.15!important;
+}
+@media(max-width:760px){
+ :where(.hero-dashboard,.reports-console,.dash,.dash-widget,.fuel-intelligence-widget,.fuel-heatmap-panel,.profitability-widget,.route-widget,.cost-widget,.driver-widget,.insights-widget) :where(p,.widget-description,.dash-description,.fuel-description,.heatmap-description,.insight-description){
+   font-size:12px!important;
+   line-height:1.55!important;
+ }
+ :where(.hero-dashboard,.reports-console,.dash,.dash-widget,.fuel-intelligence-widget,.fuel-heatmap-panel,.profitability-widget,.route-widget,.cost-widget,.driver-widget,.insights-widget) :where(.widget-head h3,.widget-head h4,.fuel-subhead h3,.fuel-subhead h4){
+   font-size:16px!important;
+ }
+}
+</style>
+
+</head>
+<body>
+<header class="wrap"><a class="brand" href="#inicio"><span class="mark">⌁</span><span>PRINCIPIA.LOG<br><small style="font-size:9.6px;color:#8fa4aa;letter-spacing:.2em">INTELIGÊNCIA LOGÍSTICA</small></span></a><nav class="nav"><a href="#desafios">O cenário</a><a href="#motor">Como funciona</a><a href="#relatorios">Relatórios</a><a href="#assistente">Assistente IA</a></nav><a class="topcta" href="https://wa.me/555199559973" target="_blank" rel="noopener">FALE CONOSCO ↗</a></header>
+<main id="inicio">
+<section class="wrap hero"><div class="reveal"><div class="eyebrow">GESTÃO INTELIGENTE PARA SUA OPERAÇÃO</div><h1>Sua frota trabalha. <span>Mas quanto ela realmente lucra?</span></h1><p>Desenvolvemos uma estrutura de inteligência sob medida para sua transportadora, conectando seus dados, ferramentas e processos em uma única visão.</p><div class="actions"><a class="btn" href="https://wa.me/555199559973" target="_blank" rel="noopener">FALE CONOSCO ↗</a></div></div>
+<div class="hero-dashboard reveal">
+  <div class="hero-dashboard-top">
+    <span>PRINCIPIA.LOG / CENTRAL DE INTELIGÊNCIA</span>
+    <span><i></i> MONITORAMENTO ILUSTRATIVO</span>
+  </div>
+  
+<div class="hero-dashboard-screen dashboard-native">
+  <aside class="dash-sidebar">
+    <div class="dash-logo"><span class="dash-logo-mark">⌁</span><span>PRINCIPIA<br>LOG</span></div>
+    <div class="dash-nav active"><b data-icon="overview">▦</b><span>Dashboard<small>Visão geral</small></span></div>
+    <div class="dash-nav"><b>▣</b><span>Veículos</span></div>
+    <div class="dash-nav"><b>⌁</b><span>Rotas</span></div>
+    <div class="dash-nav"><b>♧</b><span>Alertas <i>3</i></span></div>
+    <div class="dash-nav"><b>▤</b><span>Relatórios</span></div>
+    <div class="dash-nav"><b>♙</b><span>Motoristas</span></div>
+    <div class="dash-nav"><b>◉</b><span>Custos</span></div>
+    <div class="dash-nav"><b>⚙</b><span>Configurações</span></div>
+    <div class="sidebar-foot"><span class="online-dot"></span> Operação conectada</div>
+  </aside>
+
+  <div class="dash-main">
+    <div class="dash-main-head">
+      <div><small>VISÃO GERAL / TRANSPORTADORA</small><h3>Central de Operações</h3><span>Indicadores atualizados • demonstração ilustrativa</span></div>
+      <div class="dash-period">◷ &nbsp; Últimos 30 dias⌄</div>
+    </div>
+
+    <div class="dash-kpis">
+      <div class="dash-kpi"><div class="kpi-icon teal">▣</div><div><small>FROTA ATIVA</small><b>142</b><em>+4% no período</em></div></div>
+      <div class="dash-kpi"><div class="kpi-icon cyan">⌁</div><div><small>DISTÂNCIA PERCORRIDA</small><b><span id="dash-distance">18.450</span> km</b><em>+12% no período</em></div></div>
+      <div class="dash-kpi"><div class="kpi-icon yellow">▣</div><div><small>CONSUMO DE COMBUSTÍVEL</small><b>3.210 L</b><em class="negative">−3% no período</em></div></div>
+      <div class="dash-kpi alert-kpi"><div class="kpi-icon red">△</div><div><small>ALERTAS DA OPERAÇÃO</small><b><span class="alert-open">18 <small>abertos</small></span><span class="alert-critical">2 <small>críticos</small></span></b></div><span class="alert-pulse-native">!</span></div>
+    </div>
+
+    <div class="dash-middle">
+      <section class="dash-widget profitability-widget">
+        <div class="widget-head annual-head">
+          <div><small>DESEMPENHO OPERACIONAL</small><h4>Eficiência da operação — realizado e projetado</h4></div>
+          <span class="trend-tag">↗ +12% no ano</span>
+        </div>
+        <div class="annual-summary">
+          <div><strong>81%</strong><span>eficiência operacional até agosto</span></div>
+          <div class="annual-summary-note"><span class="annual-dot"></span> Agosto · mês atual</div>
+        </div>
+        <svg class="profit-chart annual-chart" viewBox="0 0 720 230" preserveAspectRatio="none" role="img" aria-label="Eficiência operacional realizada de janeiro a agosto e projeção de setembro a dezembro">
+          <defs>
+            <linearGradient id="annualFill" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#9be36b" stop-opacity=".28"/><stop offset="1" stop-color="#9be36b" stop-opacity="0"/></linearGradient>
+          </defs>
+          <g class="chart-grid"><path d="M12 28H708 M12 72H708 M12 116H708 M12 160H708"/></g>
+          <path class="annual-area" d="M12 164 L75 151 L138 143 L201 125 L264 117 L327 101 L390 88 L455 78 L455 185 L12 185Z"/>
+          <path class="annual-realized" d="M12 164 C42 158 48 151 75 151 S111 145 138 143 S174 129 201 125 S237 120 264 117 S300 106 327 101 S363 92 390 88 S428 80 455 78"/>
+          <path class="annual-projection" d="M455 78 C500 72 520 64 518 62 S570 48 581 45 S650 31 708 20"/>
+          <line x1="455" y1="15" x2="455" y2="188" class="annual-current-line"/>
+          <circle cx="455" cy="78" r="6" class="annual-current-point"/>
+          <circle cx="708" cy="20" r="4" class="annual-projection-point"/>
+          <text x="455" y="12" class="annual-current-label" text-anchor="middle">AGOSTO · ATUAL</text>
+          <text x="708" y="13" class="annual-projection-label" text-anchor="end">89% PROJETADO</text>
+          <g class="chart-labels annual-months">
+            <text x="12" y="215">JAN</text><text x="75" y="215">FEV</text><text x="138" y="215">MAR</text><text x="201" y="215">ABR</text><text x="264" y="215">MAI</text><text x="327" y="215">JUN</text><text x="390" y="215">JUL</text><text x="455" y="215" class="current-month">AGO</text><text x="518" y="215">SET</text><text x="581" y="215">OUT</text><text x="644" y="215">NOV</text><text x="708" y="215">DEZ</text>
+          </g>
+        </svg>
+        <div class="annual-legend"><span><i class="realized-key"></i> Realizado · jan–ago</span><span><i class="projection-key"></i> Projeção · set–dez</span></div>
+        <div class="annual-indicators">
+          <div><small>APROVEITAMENTO DA FROTA</small><b>86%</b><span>capacidade utilizada</span></div>
+          <div><small>PRODUTIVIDADE</small><b>+9,4%</b><span>vs. início do ano</span></div>
+          <div><small>CUSTO OPERACIONAL / KM</small><b>R$ 4,28</b><span>média atual</span></div>
+          <div><small>PONTUALIDADE</small><b>94,2%</b><span>entregas no prazo</span></div>
+        </div>
+      </section>
+
+      <section class="dash-widget route-widget">
+        <div class="widget-head route-head"><div><small>RASTREAMENTO DE FROTA</small><h4>Veículo em rota</h4></div><span class="live-tag"><i></i> AO VIVO</span></div>
+        <div class="native-map">
+          <svg viewBox="0 0 620 260" preserveAspectRatio="none" class="native-route-svg" aria-label="Mapa ilustrativo com rota do caminhão">
+            <defs>
+              <pattern id="mapGridNative" width="34" height="34" patternUnits="userSpaceOnUse"><path d="M34 0H0V34" fill="none" stroke="#245061" stroke-width="1" opacity=".5"/></pattern>
+              <linearGradient id="nativeRouteGradient" x1="0" y1="1" x2="1" y2="0"><stop stop-color="#17d7c2"/><stop offset=".55" stop-color="#39e5b2"/><stop offset="1" stop-color="#a5ee68"/></linearGradient>
+              <filter id="nativeGlow"><feGaussianBlur stdDeviation="4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+            </defs>
+            <rect width="620" height="260" fill="#071923"/><rect width="620" height="260" fill="url(#mapGridNative)"/>
+            <g class="map-streets"><path d="M-10 45L160 260 M30 -10L230 270 M140 -10L320 270 M260 -10L440 270 M380 -10L560 270 M510 -10L650 210 M-10 90L620 30 M-10 155L620 100 M-10 225L620 170 M40 270L250 0 M180 270L390 0 M330 270L540 0 M470 270L650 60"/></g>
+            <path class="native-route-track" d="M54 208 C82 202 88 168 122 166 L180 166 Q205 166 216 190 L260 190 Q278 190 292 151 L320 118 Q332 103 352 110 L394 130 L422 85 Q430 70 449 76 L495 88 L525 42 Q533 28 548 30"/>
+            <path class="native-route-glow" d="M54 208 C82 202 88 168 122 166 L180 166 Q205 166 216 190 L260 190 Q278 190 292 151 L320 118 Q332 103 352 110 L394 130 L422 85 Q430 70 449 76 L495 88 L525 42 Q533 28 548 30"/>
+            <circle cx="54" cy="208" r="7" class="origin-dot"/><circle cx="548" cy="30" r="7" class="destination-dot"/>
+            <path id="nativeRouteMotion" d="M54 208 C82 202 88 168 122 166 L180 166 Q205 166 216 190 L260 190 Q278 190 292 151 L320 118 Q332 103 352 110 L394 130 L422 85 Q430 70 449 76 L495 88 L525 42 Q533 28 548 30" fill="none"/>
+<g class="map-truck" filter="url(#nativeGlow)">
+              <rect x="-12" y="-7" width="23" height="13" rx="3" fill="#9be36b" stroke="#eaffdc" stroke-width="1.4"/>
+              <path d="M2 -5H7L10 0H2Z" fill="#eaffdc"/>
+              <circle cx="-6" cy="6.5" r="2.2" fill="#071116"/><circle cx="7" cy="6.5" r="2.2" fill="#071116"/>
+              <animateMotion dur="26s" repeatCount="indefinite" rotate="auto" keyPoints="0;1" keyTimes="0;1" calcMode="linear">
+                <mpath href="#nativeRouteMotion"/>
+              </animateMotion>
+            </g>
+          </svg>
+          <div class="map-origin">A <span>PORTO ALEGRE</span></div><div class="map-destination">B <span>JOINVILLE</span></div>
+          <div class="route-vehicle-info"><small>V01 · EM MOVIMENTO</small><b><span id="dash-speed">68</span> km/h</b><div class="speed-track"><i></i></div><span>482 km restantes</span></div>
+        </div>
+      </section>
+</div>
+
+    <div class="dash-bottom-grid">
+      <section class="dash-widget bottom-widget cost-widget fuel-intelligence-widget">
+        <div class="fuel-module-head">
+          <div><small>INTELIGÊNCIA DE COMBUSTÍVEL</small><h4>Eficiência e padrão de consumo da frota</h4><p>Uma visão cruzada de volume, distância, horário e custo para identificar desvios reais de eficiência.</p></div>
+          <span class="fuel-period">PERÍODO ANALISADO · ÚLTIMOS 30 DIAS</span>
+        </div>
+        <div class="fuel-kpis">
+          <div class="fuel-kpi"><small>CONSUMO MÉDIO</small><b>2,8 <em>km/L</em></b><span>Eficiência média da frota</span></div>
+          <div class="fuel-kpi"><small>CUSTO DE COMBUSTÍVEL / KM</small><b>R$ 1,53</b><span>Despesa por km percorrido</span></div>
+          <div class="fuel-kpi"><small>VOLUME CONSUMIDO</small><b>18.450 <em>L</em></b><span>Total no período analisado</span></div>
+          <div class="fuel-kpi"><small>VARIAÇÃO DE EFICIÊNCIA</small><b class="fuel-positive">+6,8%</b><span>Melhora vs. período anterior</span></div>
+        </div>
+        <div class="fuel-heatmap-panel">
+          <div class="fuel-subhead"><div><small>MAPA DE CALOR</small><h5>Consumo por dia e horário</h5><p>Identifique quando a frota concentra maior consumo e investigue se acompanha a distância percorrida.</p></div><div class="heat-legend"><span>Menor</span><i class="heat-scale"></i><span>Maior</span></div></div>
+          <div class="heatmap-scroll"><div class="fuel-heatmap" role="img" aria-label="Mapa de calor ilustrativo do consumo de combustível por dia da semana, das 06h às 18h">
+            <div class="heat-corner">DIA / HORA</div><div class="heat-hour">06h</div><div class="heat-hour">09h</div><div class="heat-hour">12h</div><div class="heat-hour">15h</div><div class="heat-hour">18h</div>
+            <div class="heat-day">SEG</div><i class="heat-cell h2" title="Segunda, 06h"></i><i class="heat-cell h4" title="Segunda, 09h"></i><i class="heat-cell h3" title="Segunda, 12h"></i><i class="heat-cell h4" title="Segunda, 15h"></i><i class="heat-cell h3" title="Segunda, 18h"></i>
+            <div class="heat-day">TER</div><i class="heat-cell h3"></i><i class="heat-cell h5"></i><i class="heat-cell h4"></i><i class="heat-cell h5"></i><i class="heat-cell h3"></i>
+            <div class="heat-day">QUA</div><i class="heat-cell h2"></i><i class="heat-cell h3"></i><i class="heat-cell h4"></i><i class="heat-cell h3"></i><i class="heat-cell h2"></i>
+            <div class="heat-day">QUI</div><i class="heat-cell h3"></i><i class="heat-cell h5"></i><i class="heat-cell h5"></i><i class="heat-cell h4"></i><i class="heat-cell h4"></i>
+            <div class="heat-day">SEX</div><i class="heat-cell h3"></i><i class="heat-cell h4"></i><i class="heat-cell h4"></i><i class="heat-cell h3"></i><i class="heat-cell h2"></i>
+            <div class="heat-day">SÁB</div><i class="heat-cell h1"></i><i class="heat-cell h2"></i><i class="heat-cell h2"></i><i class="heat-cell h2"></i><i class="heat-cell h1"></i>
+            <div class="heat-day">DOM</div><i class="heat-cell h1"></i><i class="heat-cell h1"></i><i class="heat-cell h2"></i><i class="heat-cell h1"></i><i class="heat-cell h0"></i>
+          </div></div>
+          <div class="heatmap-note"><span><i></i> Intensidade estimada · 06h às 18h</span><span>Dados demonstrativos</span></div>
+        </div>
+      </section>
+      <section class="dash-widget bottom-widget composition-widget">
+        <div class="widget-head"><div><small>VISÃO FINANCEIRA</small><h4>Composição dos custos</h4></div></div>
+        <div class="cost-row"><span>Combustível</span><b>48%</b><i><em style="--cost-share:48%;width:48%"></em></i></div>
+        <div class="cost-row"><span>Manutenção</span><b>22%</b><i><em style="--cost-share:22%;width:22%"></em></i></div>
+        <div class="cost-row"><span>Pedágios</span><b>12%</b><i><em style="--cost-share:12%;width:12%"></em></i></div>
+        <div class="cost-row"><span>Outros</span><b>18%</b><i><em style="--cost-share:18%;width:18%"></em></i></div>
+      </section>
+      <section class="dash-widget bottom-widget driver-widget">
+        <div class="widget-head"><div><small>DESEMPENHO OPERACIONAL</small><h4>Eficiência dos motoristas</h4></div></div>
+        <div class="driver-list"><div><span class="driver-avatar">MS</span><span><b>Motorista 01</b><small>Condução eficiente</small></span><strong>96%</strong></div><div><span class="driver-avatar">RC</span><span><b>Motorista 02</b><small>Dentro da meta</small></span><strong>92%</strong></div><div><span class="driver-avatar">AL</span><span><b>Motorista 03</b><small>Boa performance</small></span><strong>89%</strong></div></div>
+      </section>
+    </div>
+    <div class="dash-insights-row">
+      <section class="dash-widget bottom-widget insights-widget">
+        <div class="widget-head"><div><small>INTELIGÊNCIA APLICADA · ANÁLISE CONTÍNUA</small><h4>O que os dados revelam na sua operação</h4></div><span class="insight-live"><i></i> MONITORANDO DADOS</span></div>
+        <div class="insight-stage" aria-live="polite">
+          <div class="insight-meta"><span id="insight-category">RENTABILIDADE · ANÁLISE 01/04</span><span id="insight-time">AGORA</span></div>
+          <b id="insight-title">Custo acima do esperado em um veículo da frota.</b>
+          <p id="insight-copy">O V04 apresenta custo por km 18% acima da média. A composição aponta combustível e manutenção como os principais fatores a investigar.</p>
+          <div class="insight-impact"><span>IMPACTO IDENTIFICADO</span><strong id="insight-impact-value">+18% no custo por km</strong></div>
+        </div>
+        <div class="insight-progress" aria-hidden="true"><i id="insight-progress-bar"></i></div>
+        <div class="insight-foot"><span><i></i> Cruzamento de indicadores operacionais e financeiros</span><span id="insight-counter">01 / 04</span></div>
+      </section>
+    </div>
+  </div>
+</div>
+<div class="hero-dashboard-foot"><span>FROTA · ROTAS · CUSTOS · RESULTADOS</span><span>VISÃO UNIFICADA DA OPERAÇÃO</span></div>
+</div></section>
+<div class="wrap metrics reveal"><div class="metric"><b>360°</b><span>Visão da operação</span></div><div class="metric"><b>Integrada</b><span>Informação conectada</span></div><div class="metric"><b>Por viagem</b><span>Custos e receitas</span></div><div class="metric"><b>IA</b><span>Inteligência aplicada</span></div></div>
+<section class="wrap" id="desafios"><div class="head reveal"><div><div class="kicker">01 / O QUE ANALISAMOS</div><h2>Entre o caminhão dar a partida e a carga chegar ao destino, existe um universo de dados acontecendo em tempo real.</h2></div><p>Transformamos e conectamos os dados gerados a cada km percorrido em inteligência estratégica, revelando custos, oportunidades e resultados da sua transportadora.</p></div><div class="grid4">
+<article class="problem reveal"><small>01 / RENTABILIDADE</small><h3>Rentabilidade por cliente, frete e viagem</h3><p>Cruzamos faturamento, distância, tipo de carga, ocupação, combustível, pedágios, despesas e tempo de operação para calcular o resultado financeiro de cada negócio.</p></article>
+<article class="problem reveal"><small>02 / GESTÃO DE FROTA</small><h3>Quanto custa cada caminhão, rodando ou parado?</h3><p>Analisamos combustível, manutenção, pneus, depreciação, seguros, custos fixos, quilometragem e disponibilidade. Identificamos capacidade não aproveitada e o impacto financeiro do tempo parado.</p></article>
+<article class="problem reveal"><small>03 / EFICIÊNCIA LOGÍSTICA</small><h3>Análise de rotas, viagens e capacidade de transporte</h3><p>Relacionamos km carregados e vazios, localização, disponibilidade, ocupação e sequência de viagens para avaliar trajetos e oportunidades de melhorar o aproveitamento da frota.</p></article>
+<article class="problem reveal"><small>04 / INTELIGÊNCIA ESTRATÉGICA</small><h3>Análises financeiras, simulações e recomendações com IA</h3><p>Cruzamos dados operacionais e financeiros para identificar desvios, comparar cenários, simular preços e custos, projetar impactos e recomendar ações com evidências.</p></article>
+</div></section>
+<section class="wrap" id="relatorios"><div class="head reveal"><div><div class="kicker">03 / VISÃO ANALÍTICA</div><h2>Uma visão mais completa de tudo o que acontece na sua operação.</h2></div><p>Cada viagem, veículo, cliente e rota revela informações sobre custos, rentabilidade e oportunidades. Explore uma central de inteligência com indicadores, gráficos, alertas e análises que ajudam a entender o negócio por inteiro.</p></div>
+<div class="reports-console reveal"><div class="demo"><div class="demo-top"><b>EXPLORE OS RELATÓRIOS INTERATIVOS</b><span class="status">● AMBIENTE DEMONSTRATIVO</span></div>
+    <div class="tabs"><button class="tab active" data-view="profit">◈ RENTABILIDADE</button><button class="tab" data-view="fleet">▣ FROTA</button><button class="tab" data-view="routes">⌁ ROTAS E VIAGENS</button><button class="tab" data-view="clients">◎ CLIENTES</button></div>
+    <div class="dash" id="dashboard">
+      <div class="dashhead"><div><h3>Resultado financeiro por viagem</h3><p>Receitas, custos e margem operacional — exemplo ilustrativo</p></div><div class="period">ÚLTIMOS 30 DIAS</div></div>
+      <div class="kpis"><div class="kpi"><small>Faturamento</small><b>R$ 428,6 mil</b><em>↑ 8,4% no período</em></div><div class="kpi"><small>Custos apurados</small><b>R$ 319,2 mil</b><em>74,5% da receita</em></div><div class="kpi"><small>Resultado operacional</small><b>R$ 109,4 mil</b><em>25,5% de margem</em></div><div class="kpi"><small>Custo médio / km</small><b>R$ 4,28</b><em>por km percorrido</em></div></div>
+      <div class="lower"><div class="panel"><div class="panel-title">${d.chart}</div><div class="chart" id="report-chart"></div><div class="legend"><i></i> Evolução do indicador selecionado</div></div><div class="panel"><div class="panel-title">ALERTAS E OPORTUNIDADES IDENTIFICADAS</div><div class="alert-row danger"><span class="alert-symbol">!</span><div><b>Custo acima do esperado</b><small>Caminhão 204 está 18% acima da média.</small></div><strong>18%</strong></div><div class="alert-row warning"><span class="alert-symbol">↗</span><div><b>Oportunidade de economia</b><small>Possível redução de deslocamentos vazios.</small></div><strong>14%</strong></div><div class="alert-row success"><span class="alert-symbol">★</span><div><b>Melhor resultado no período</b><small>Viagem 0842 com margem de 32,8%.</small></div><strong>32,8%</strong></div></div></div>
+      <div class="insight-strip"><span class="insight-icon">✦</span><div><b>INSIGHT DA PRINCIPIA.LOG</b><p id="report-insight">A margem da viagem 0842 está acima da média. Compare rota, ocupação e custos para identificar o que explica o resultado.</p></div></div>
+      <div class="note">Demonstração visual com dados fictícios. Indicadores, cálculos, alertas e relatórios são definidos conforme as fontes e necessidades de cada transportadora.</div>
+    </div>
+  </div>
+</div></section>
+<section class="chat-section" id="assistente"><div class="wrap two-col chat-layout"><div class="copy reveal"><div class="kicker">04 / ASSISTENTE VIRTUAL COM IA</div><h2>Pergunte como no ChatGPT.</h2><p class="ai-subheadline">Obtenha respostas com os dados da sua transportadora.</p><p class="ai-interaction-cue"><span class="ai-cue-arrow">↘</span> Escolha uma pergunta e experimente a demonstração.</p></div>
+<div class="chat-window reveal"><div class="chat-metrics"><div><small>ÁREAS CONECTADAS</small><b>06</b></div><div><small>ANÁLISE</small><b>EM TEMPO REAL*</b></div><div><small>ACESSO</small><b>24/7*</b></div></div><div class="chat-head"><div class="agent"><div class="agent-icon">⌁</div><div>Principia Intelligence<small>Seu analista virtual · demonstração interativa</small></div></div><span class="status">● CONECTADO</span></div><div class="chatbody" id="chatbody"><div class="msg bot">Olá! Sou a inteligência da sua transportadora. Escolha uma pergunta e veja como posso ajudar.</div></div><div class="prompt-invitation"><span class="prompt-pulse"></span> CLIQUE EM UMA PERGUNTA PARA TESTAR</div><div class="prompts"><button class="prompt prompt-featured" data-q="Quais caminhões tiveram maior custo nos últimos 30 dias?">Quais caminhões custam mais?</button><button class="prompt" data-q="Qual rota apresentou o melhor resultado financeiro?">Qual rota dá mais resultado?</button><button class="prompt" data-q="Onde estamos perdendo dinheiro com deslocamentos vazios?">Onde perco com km vazio?</button><button class="prompt" data-q="Qual seria o impacto de reajustar o frete de um cliente?">Simular reajuste de frete</button><button class="prompt" data-q="Qual cliente tem maior faturamento e menor rentabilidade?">Clientes mais rentáveis</button></div><form class="chatform" id="chatform"><input id="chatinput" placeholder="Digite uma pergunta sobre a operação..." aria-label="Digite sua pergunta"><button class="send" aria-label="Enviar">↗</button></form><div class="chatnote">*Disponibilidade conforme configuração do projeto. Demonstração interativa com respostas ilustrativas. Na implantação, a IA consulta os dados conectados da sua transportadora e informa quando faltarem informações para concluir uma análise.</div></div>
+</div></section>
+<section class="wrap personalized-section" id="personalizada">
+  <div class="personalized-copy copy reveal">
+    <div class="kicker">05 / SUA OPERAÇÃO CONECTADA À INTELIGÊNCIA</div>
+    <h2>INTEGRAMOS SUAS FERRAMENTAS PARA TRABALHAREM COMO UMA SÓ ESTRUTURA.</h2>
+    <p>Suas ferramentas continuam fazendo parte da operação, agora conectadas e compartilhando informações em uma estrutura inteligente.</p>
+  </div>
+
+  <div class="connection-visual tech-architecture reveal" aria-label="Diagrama ilustrativo de integração de sistemas e inteligência Principia.Log">
+    <div class="connection-top">
+      <span>ARQUITETURA DE DADOS / PRINCIPIA.LOG</span>
+      <span class="status"><i class="connection-status-dot"></i> INTEGRAÇÕES ATIVAS</span>
+    </div>
+    <div class="tech-network">
+      <div class="tech-zone-label">01 / FONTES DE DADOS</div>
+      <div class="tech-sources">
+        <div class="tech-source"><span class="tech-icon">▦</span><b>TMS / ERP</b><small>Gestão e operação</small></div>
+        <div class="tech-source"><span class="tech-icon">⌖</span><b>RASTREAMENTO</b><small>Frota e telemetria</small></div>
+        <div class="tech-source"><span class="tech-icon">◉</span><b>COMBUSTÍVEL</b><small>Abastecimentos</small></div>
+        <div class="tech-source"><span class="tech-icon">＄</span><b>FINANCEIRO</b><small>Custos e receitas</small></div>
+        <div class="tech-source"><span class="tech-icon">▤</span><b>PLANILHAS</b><small>Controles internos</small></div>
+        <div class="tech-source"><span class="tech-icon">＋</span><b>OUTRAS FONTES</b><small>Dados disponíveis</small></div>
+      </div>
+
+      <div class="tech-bus" aria-hidden="true">
+        <span></span><span></span><span></span><span></span><span></span><span></span>
+      </div>
+
+      <div class="tech-core-wrap">
+        <div class="tech-core-side">
+          <span class="core-orbit orbit-a"></span><span class="core-orbit orbit-b"></span>
+          <div class="core-symbol">✳</div>
+        </div>
+        <div class="tech-core-copy">
+          <small>CAMADA DE INTEGRAÇÃO E INTELIGÊNCIA</small>
+          <b>PRINCIPIA.LOG</b>
+          <span>Organização de dados <i>→</i> Cruzamento de informações <i>→</i> Inteligência artificial</span>
+        </div>
+        <div class="core-live"><i></i> PROCESSANDO DADOS</div>
+      </div>
+
+      <div class="tech-output-line" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
+      <div class="tech-zone-label output-label">02 / INFORMAÇÕES TRANSFORMADAS EM DECISÕES</div>
+      <div class="tech-outputs">
+        <div class="tech-output"><b>R$</b><span>Rentabilidade</span><small>Custos e margens</small></div>
+        <div class="tech-output"><b>↗</b><span>Oportunidades</span><small>Eficiência operacional</small></div>
+        <div class="tech-output"><b>◷</b><span>Previsões</span><small>Cenários e tendências</small></div>
+        <div class="tech-output"><b>AI</b><span>Recomendações</span><small>Análises com IA</small></div>
+      </div>
+    </div>
+    <div class="connection-foot"><span>DADOS DISPERSOS</span><i>→</i><span>INTELIGÊNCIA CONECTADA</span><i>→</i><span>DECISÕES MAIS CLARAS</span></div>
+  </div>
+
+  <div class="custom-cards personalized-features">
+    <div class="custom-card"><b>PERSONALIZAÇÃO</b><span>Análises, indicadores e recursos alinhados às necessidades da transportadora.</span></div>
+    <div class="custom-card"><b>INTEGRAÇÃO</b><span>Conexão com os sistemas e ferramentas que a empresa já utiliza.</span></div>
+    <div class="custom-card"><b>INTELIGÊNCIA</b><span>Dados operacionais e financeiros relacionados para revelar novas perspectivas.</span></div>
+    <div class="custom-card"><b>EVOLUÇÃO CONTÍNUA</b><span>Acompanhamento e desenvolvimento conforme a empresa evolui.</span></div>
+  </div>
+</section>
+<section class="wrap cta"><div class="cta-panel reveal"><div><div class="kicker">PRINCIPIA.LOG / PRÓXIMO PASSO</div><h2>CONTE COM A GENTE PARA ESTRUTURAR SUA OPERAÇÃO.</h2><p>Vamos entender suas necessidades e desenvolver uma solução personalizada para a realidade da sua operação.</p></div><a class="btn" href="https://wa.me/555199559973" target="_blank" rel="noopener">FALE CONOSCO ↗</a></div></section>
+</main>
+<footer class="wrap"><span>PRINCIPIA.LOG — INTELIGÊNCIA LOGÍSTICA PERSONALIZADA</span><span>Mais clareza sobre cada operação. Mais inteligência para decidir.</span><span>© 2026</span></footer>
+<script>
+document.addEventListener('DOMContentLoaded',()=>{const items=[...document.querySelectorAll('.reveal')];items.forEach((el,i)=>{el.style.transitionDelay=Math.min(i*65,520)+'ms'});window.setTimeout(()=>items.forEach(el=>el.classList.add('show')),850);});
+const datasets={
+profit:{chart:'RECEITA, CUSTOS E MARGEM AO LONGO DO TEMPO',title:'Rentabilidade por viagem e operação',sub:'Receitas, custos e margem operacional — exemplo ilustrativo',k:[['Faturamento','R$ 428,6 mil','↑ 8,4% no período'],['Custos apurados','R$ 319,2 mil','74,5% da receita'],['Resultado operacional','R$ 109,4 mil','25,5% de margem'],['Custo médio / km','R$ 4,28','por km percorrido']],r:[['Viagem 0842','Margem operacional','32,8%'],['Viagem 0791','Custo por km','R$ 3,91'],['Cliente Alfa','Resultado no período','R$ 28,4 mil']],insight:'A margem da viagem 0842 está acima da média. Compare rota, ocupação e custos para identificar o que explica o resultado.',values:[42,58,49,76,61,83,72,95]},
+fleet:{chart:'CUSTO E UTILIZAÇÃO POR VEÍCULO',title:'Gestão de frota e desempenho dos veículos',sub:'Utilização, disponibilidade e custos por veículo — exemplo ilustrativo',k:[['Custo total da frota','R$ 186,3 mil','no período'],['Disponibilidade','91,2%','da frota analisada'],['Custo médio / km','R$ 4,46','por km percorrido'],['Tempo parado','8,8%','do período analisado']],r:[['Caminhão 204','Custo total','R$ 18,2 mil'],['Caminhão 118','Tempo parado','41 horas'],['Caminhão 076','Menor custo / km','R$ 3,62']],insight:'O caminhão 204 está 18% acima do custo médio por km da frota. Vale investigar consumo, manutenção e tempo improdutivo.',values:[70,63,78,54,66,45,59,37]},
+routes:{chart:'DISTÂNCIA, OCUPAÇÃO E EFICIÊNCIA DAS ROTAS',title:'Rotas, viagens e aproveitamento da frota',sub:'Distância, ocupação, retorno e tempo de percurso — exemplo ilustrativo',k:[['Km percorridos','82,4 mil','no período'],['Km vazios','14,8 mil','18% da distância'],['Ocupação média','78,5%','da capacidade'],['Tempo médio','18,4 h','por viagem']],r:[['Porto Alegre–SP','Maior volume','42 viagens'],['Rota Sul 03','Potencial de encaixe','+12%'],['Viagem 0921','Retorno vazio','286 km']],insight:'Há viagens com retorno vazio em trechos onde podem existir cargas compatíveis. Cruzar localização, capacidade e prazo pode revelar encaixes.',values:[28,45,40,68,56,77,66,89]},
+clients:{chart:'FATURAMENTO E RENTABILIDADE POR CLIENTE',title:'Rentabilidade e desempenho da carteira',sub:'Faturamento, margem, recorrência e concentração — exemplo ilustrativo',k:[['Receita da carteira','R$ 428,6 mil','no período'],['Clientes ativos','86','com movimentação'],['Margem média','25,5%','da carteira'],['Concentração','31,8%','nos 5 maiores']],r:[['Cliente Alfa','Maior resultado','R$ 28,4 mil'],['Cliente Delta','Maior crescimento','+16,2%'],['Cliente Ômega','Margem abaixo da média','11,4%']],insight:'O Cliente Ômega tem margem inferior à média da carteira. Avaliar perfil das cargas, frequência e custos de atendimento antes de renegociar.',values:[48,52,63,59,75,70,82,94]}
+};
+function chartSVG(values,key){
+ const W=900,H=250,step=W/(values.length-1);
+ const pts=values.map((v,i)=>[i*step,H-(v/100)*(H-34)-12]);
+ const line=pts.map((p,i)=>(i?'L':'M')+p[0].toFixed(1)+' '+p[1].toFixed(1)).join(' ');
+ const area=line+` L ${W} ${H} L 0 ${H} Z`;
+ const grid=[45,95,145,195].map(y=>`<line x1="0" y1="${y}" x2="${W}" y2="${y}" class="chart-grid"/>`).join('');
+ const second=pts.map((p,i)=>[p[0],Math.min(H-12,p[1]+(key==='routes'?34:48)+Math.sin(i)*8)]);
+ const line2=second.map((p,i)=>(i?'L':'M')+p[0].toFixed(1)+' '+p[1].toFixed(1)).join(' ');
+ return `<svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="none" aria-label="Gráfico de evolução"><defs><linearGradient id="chartFill" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#9be36b" stop-opacity=".3"/><stop offset="1" stop-color="#9be36b" stop-opacity="0"/></linearGradient></defs>${grid}<path class="chart-area" d="${area}"/><path class="chart-line secondary-line" d="${line2}"/><path class="chart-line" d="${line}"/>${pts.map(p=>`<circle class="chart-point" cx="${p[0]}" cy="${p[1]}" r="4"/>`).join('')}</svg>`;
+}
+function showReport(key){let d=datasets[key];document.getElementById('dashboard').innerHTML=`<div class="dashhead"><div><h3>${d.title}</h3><p>${d.sub}</p></div><div class="period">ÚLTIMOS 30 DIAS</div></div><div class="kpis">${d.k.map(x=>`<div class="kpi"><small>${x[0]}</small><b>${x[1]}</b><em>${x[2]}</em></div>`).join('')}</div><div class="lower"><div class="panel"><div class="panel-title">${d.chart}</div><div class="chart" id="report-chart">${chartSVG(d.values,key)}</div><div class="legend"><i></i> Evolução do indicador selecionado</div></div><div class="panel"><div class="panel-title">DESTAQUES DA ANÁLISE</div>${d.r.map(x=>`<div class="rank"><div>${x[0]}<small>${x[1]}</small></div><b>${x[2]}</b></div>`).join('')}</div></div><div class="insight-strip"><span class="insight-icon">✦</span><div><b>INSIGHT DA PRINCIPIA.LOG</b><p>${d.insight}</p></div></div><div class="note">Demonstração visual com dados fictícios. Indicadores, cálculos, alertas e relatórios são definidos conforme as fontes e necessidades de cada transportadora.</div>`;document.querySelectorAll('.tab').forEach(b=>b.classList.toggle('active',b.dataset.view===key))}
+document.querySelectorAll('.tab').forEach(b=>b.addEventListener('click',()=>showReport(b.dataset.view)));
+showReport('profit');
+const answers=[
+{keys:['caminh','custo','veículo','veiculo','frota'],a:'Na demonstração, os maiores custos estão concentrados em três veículos:\n\n<strong>• Caminhão 204:</strong> R$ 18.200 no período.\n<strong>• Caminhão 118:</strong> R$ 16.850 no período.\n<strong>• Caminhão 311:</strong> R$ 15.940 no período.\n\nO próximo passo seria abrir a composição — combustível, manutenção, pneus, depreciação e tempo parado — para entender o que explica a diferença. <strong>Valores fictícios e ilustrativos.</strong>'},
+{keys:['rota','melhor resultado','financeiro'],a:'Na amostra demonstrativa, a <strong>Rota Sul 03</strong> apresenta o melhor potencial de resultado.\n\nA análise considera receita do frete, distância, combustível, pedágios, tempo de viagem e possibilidade de retorno com carga. O cenário indica uma oportunidade estimada de 12%, que precisaria ser validada com dados reais.'},
+{keys:['vazio','deslocamento','retorno'],a:'A análise identificou oportunidades em viagens com retorno vazio.\n\n<strong>Exemplo:</strong> a Viagem 0921 percorreu 286 km sem carga no retorno. Cruzando localização, capacidade disponível e demandas próximas, seria possível avaliar oportunidades de encaixe.\n\nA recomendação depende da compatibilidade entre prazo, tipo de carga, veículo e rota.'},
+{keys:['reajust','frete','cliente','preço','preco'],a:'Podemos simular o reajuste comparando o cenário atual com diferentes percentuais.\n\n<strong>Exemplo ilustrativo:</strong>\n• Frete atual: R$ 4.000\n• Reajuste simulado: 8%\n• Novo frete: R$ 4.320\n• Diferença por operação: R$ 320\n\nPara estimar o impacto real, também consideramos volume mensal, custos associados, margem atual e possível alteração na demanda.'},
+{keys:['parada','ocioso','disponibilidade'],a:'Para entender o impacto do tempo parado, cruzamos disponibilidade, agenda de viagens, manutenção e custos fixos.\n\n<strong>Exemplo:</strong> 41 horas parado no período para o Caminhão 118. A análise separa paradas programadas, manutenção e períodos sem alocação, estimando o custo associado e a capacidade que deixou de ser utilizada.'},
+{keys:['cliente','rentável','rentabilidade','margem'],a:'Na carteira demonstrativa, o Cliente Alfa apresenta o maior resultado absoluto, enquanto o Cliente Ômega tem margem abaixo da média.\n\n<strong>Cliente Alfa:</strong> R$ 28.400 de resultado no período.\n<strong>Cliente Ômega:</strong> margem de 11,4%.\n\nA análise considera faturamento, frequência, perfil das cargas, distância, custos de atendimento e despesas relacionadas. <strong>Valores ilustrativos.</strong>'},{keys:['consumo','combustível','combustivel','abastecimento'],a:'A análise de consumo compara litros abastecidos, km percorridos, tipo de rota, carga transportada e perfil de condução, quando disponíveis.\n\nAssim, conseguimos identificar veículos ou viagens fora do padrão e investigar possíveis causas, em vez de olhar apenas o valor total abastecido.'}
+];
+function addMsg(text,who){let el=document.createElement('div');el.className='msg '+who;el.innerHTML=text;let body=document.getElementById('chatbody');body.appendChild(el);body.scrollTop=body.scrollHeight}
+function ask(q){q=q.trim();if(!q)return;let safe=q.replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));addMsg(safe,'user');document.getElementById('chatinput').value='';let body=document.getElementById('chatbody'),t=document.createElement('div');t.className='msg bot';t.innerHTML='Analisando os dados da operação <span class="thinking"><i></i><i></i><i></i></span>';body.appendChild(t);body.scrollTop=body.scrollHeight;setTimeout(()=>{t.remove();let ql=q.toLocaleLowerCase('pt-BR'),m=answers.find(x=>x.keys.some(k=>ql.includes(k)));addMsg(m?m.a:'Posso investigar isso cruzando as informações disponíveis da transportadora. Para responder com precisão, a análise identifica quais dados são necessários, consulta as fontes integradas e apresenta os resultados com os critérios utilizados.\n\n<strong>Importante:</strong> esta demonstração usa respostas ilustrativas. Em um projeto real, o assistente consulta os dados e as regras definidos para a sua operação.','bot')},700)}
+document.querySelectorAll('.prompt').forEach(b=>b.addEventListener('click',()=>ask(b.dataset.q)));document.getElementById('chatform').addEventListener('submit',e=>{e.preventDefault();ask(document.getElementById('chatinput').value)});
+
+
+
+
+
+const speedEl=document.getElementById('dash-speed');
+const distanceEl=document.getElementById('dash-distance');
+let simulatedKm=18450, tick=0;
+if(speedEl && distanceEl){
+  setInterval(()=>{
+    tick++;
+    const speed=Math.round(34 + 58*(0.5 + 0.5*Math.sin(tick/0.48)));
+    simulatedKm += speed/3600;
+    speedEl.textContent=String(speed);
+    distanceEl.textContent=Math.floor(simulatedKm).toLocaleString('pt-BR');
+  },240);
+}
+
+
+// Rotação demonstrativa de insights: cada análise é exibida, pausada e substituída.
+const insightItems=[
+ {cat:'RENTABILIDADE · ANÁLISE 01/04',title:'Custo acima do esperado em um veículo da frota.',copy:'O V04 apresenta custo por km 18% acima da média. A composição aponta combustível e manutenção como os principais fatores a investigar.',impact:'+18% no custo por km'},
+ {cat:'EFICIÊNCIA LOGÍSTICA · ANÁLISE 02/04',title:'Há oportunidade de reduzir deslocamentos sem carga.',copy:'O cruzamento entre localização, sequência de viagens e capacidade disponível identificou trechos com potencial de encaixe de novas cargas.',impact:'Até 14% de redução potencial em km vazios'},
+ {cat:'GESTÃO DE FROTA · ANÁLISE 03/04',title:'Um veículo concentra mais tempo parado que os demais.',copy:'O histórico de disponibilidade e manutenção indica que o caminhão 118 acumulou períodos ociosos. Vale revisar agenda, manutenção e alocação.',impact:'41 horas de ociosidade identificadas'},
+ {cat:'DESEMPENHO · ANÁLISE 04/04',title:'Uma viagem apresentou margem acima da média.',copy:'A viagem 0842 alcançou margem operacional de 32,8%. A comparação com rota, ocupação e despesas pode revelar práticas replicáveis.',impact:'32,8% de margem operacional'}
+];
+let insightIndex=0, insightTimer=null;
+function rotateInsight(){
+ const stage=document.querySelector('.insight-stage');
+ const bar=document.getElementById('insight-progress-bar');
+ if(!stage||!bar)return;
+ const item=insightItems[insightIndex];
+ stage.classList.add('is-changing');
+ setTimeout(()=>{
+  document.getElementById('insight-category').textContent=item.cat;
+  document.getElementById('insight-title').textContent=item.title;
+  document.getElementById('insight-copy').textContent=item.copy;
+  document.getElementById('insight-impact-value').textContent=item.impact;
+  document.getElementById('insight-counter').textContent=String(insightIndex+1).padStart(2,'0')+' / 04';
+  stage.classList.remove('is-changing');
+  bar.classList.remove('run');void bar.offsetWidth;bar.classList.add('run');
+  insightIndex=(insightIndex+1)%insightItems.length;
+ },420);
+}
+if(document.querySelector('.insight-stage')){
+ rotateInsight();
+ insightTimer=setInterval(rotateInsight,6900);
+}
+
+</script>
+</body></html>
